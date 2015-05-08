@@ -1,4 +1,4 @@
-==Comic Book Library==
+==Comic Book Library
 A personal comic book library for users where they can document their own comics, put comics they don't have on a wishlist, and mark who they have lent comics to.
 
 User Stories:
