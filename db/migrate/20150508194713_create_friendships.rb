@@ -1,6 +1,6 @@
 class CreateFriendships < ActiveRecord::Migration
   def change
-    create_table :friendships do |t|
+    create_table :friendship do |t|
       t.integer :user_id
       t.integer :friend_id
       t.timestamps
@@ -8,7 +8,7 @@ class CreateFriendships < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :friendships
+    drop_table :friendship
   end
 
 end

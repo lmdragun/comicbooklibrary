@@ -21,9 +21,14 @@ module SessionsHelper
 
 	def sign_in(user)
 		remember_token = User.new_remember_token
-		cookies.permanent[:remember_token] = remember_token
-		user.update_attribute(:remember_token, User.hash(remember_token))
 		self.current_user = user
+		if params[:remember_me]
+			cookies.permanent[:remember_token] = remember_token
+			user.update_attribute(:remember_token, User.hash(remember_token))
+		else
+			cookies[:remember_token] = remember_token
+			user.update_attribute(:remember_token, User.hash(remember_token))
+		end
 	end
 
 	def sign_out #invalid cookie replaces session cookie
@@ -49,7 +54,7 @@ module SessionsHelper
 		if !signed_in?
 			store_location
 			flash[:notice] = "Please sign in"
-			redirect_to signin_url 
+			redirect_to signin_url
 		end
 	end
 

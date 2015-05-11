@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-		has_many :comics
+		has_many :comics, :through => :libraries
+		has_many :libraries
 		has_many :friendships
 		has_many :friends, :through => :friendships
 		has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
@@ -25,12 +26,21 @@ class User < ActiveRecord::Base
 
 	#Create a new remember token for a user
 	def User.new_remember_token
-		SecureRandom.urlsafe_base64 #giving access to bcrypt
+		begin
+			self[column] = SecureRandom.urlsafe_base64 #giving access to bcrypt
+		end while User.exists?(column => self[column])
 	end
 
 	#Hashing a token
 	def User.hash(token)
 		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	def send_password_reset
+		User.new_remember_token(:password_reset)
+		self.password_reset_sent_at = Time.zone.now
+		save!
+		UserMailer.password_reset(self).deliver
 	end
 
 	private

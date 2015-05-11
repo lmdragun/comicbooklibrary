@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		user = User.find_by(email: params[:session][:email].downcase)
 			#hash of session will contain the email
 
-			#Testing if user was found AND authenticate
+			#Testing if user was found AND authenticated
 			if user && user.authenticate(params[:session][:password])
 				sign_in(user)
 				redirect_back_or root_path

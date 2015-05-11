@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
   resources :libraries
   resources :comics
+  resources :companies
 
   resources :users
   resources :sessions, only: [:new, :create]
+  resources :password_resets
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'
+  # show '/profile', to: 'users#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
