@@ -1,10 +1,17 @@
 class ComicsController < ApplicationController
 
 	def index
-		
 		@comics = Comic.all
 		@comic = Comic.new
 
+	end
+
+	def lookup
+		@result = Comic.identify
+		respond_to do |format|
+		format.html {render :index}
+		format.json {render json: @result.parsed_response}
+	end
 	end
 
 	def show

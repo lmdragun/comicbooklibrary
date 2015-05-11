@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'password_resets/new'
 
   resources :libraries
+  get 'comics/lookup' => 'comics#lookup'
   resources :comics
+
   resources :companies
 
   resources :users

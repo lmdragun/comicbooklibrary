@@ -4,11 +4,10 @@ function Comic(searchTerms) {
 
 Comic.prototype = {
 	fetchComic: function(){
-			url: "/api/",
-			dataType: "jsonp",
-			context: this
+		$.ajax({
+			url: "http://localhost:3000/comics/lookup.json"
 		}).done(function(response){
-			console.log(response.issue_number);
-		})
+			console.log(response);
+		});
 	}
 }

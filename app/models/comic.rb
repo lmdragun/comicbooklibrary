@@ -3,10 +3,12 @@ class Comic < ActiveRecord::Base
 	has_many :users, :through => :libraries
 	belongs_to :company
 
-	def self.identify(query)
+	def self.identify
+		secret_key = ENV['comicvine_key']
 
-		@response = HTTParty.get("http://api.comicvine.com/search/?api_key=fa1740b9d89541eaca9c6cbe38c2bf0b1d599c09&limit=6&format=jsonp&json_callback=handleCallback&limit=20&offset=0&query=guardians")
+		response = HTTParty.get("http://api.comicvine.com/search/?api_key=#{secret_key}&limit=6&format=jsonp&json_callback=handleCallback&limit=20&offset=0&query=")
 
+		return response
 	end
-	
+
 end

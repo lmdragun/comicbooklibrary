@@ -9,7 +9,7 @@
 <br><br><br>
 <input id="comic-series-input" placeholder="search-series"><input id="comic-creator-input" placeholder="search-creator">  <input type="submit" id="update-comic"><br>
 <br><br><br>
-<h1>Comics:</h1>
+<h1>User Comics:</h1>
 <ul>
 	<% @comics.each do |c| %>
 	<li>
@@ -18,3 +18,9 @@
 	</li>
 	<% end %>
 </ul>
+<script>
+$(document).ready(function(){
+	var comic = new Comic("yo");
+	comic.fetchComic();
+})
+</script>
