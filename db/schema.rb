@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150508210009) do
     t.string  "logo_url"
   end
 
-  create_table "friendship", force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at"

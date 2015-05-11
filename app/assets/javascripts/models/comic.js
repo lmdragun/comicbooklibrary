@@ -10,7 +10,7 @@ Comic.prototype = {
 		var search = "&limit=6&format=jsonp&json_callback=handleCallback&limit=20&offset=0&query=" + "/'" + title + "+" + creators + "/'";
 		var full_url = api + key + search;
 		return $.ajax({
-			url: full_url, "&resources=character&field_list=image,real_name,name,deck&json_callback=JSON_CALLBACK",
+			url: '/api/', "&resources=character&field_list=image,real_name,name,deck&json_callback=JSON_CALLBACK",
 			dataType: "jsonp",
 			context: this
 		}).done(function(response){

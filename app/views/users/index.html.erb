@@ -1,13 +1,13 @@
-<% title "All Users" %>
+<h2>All Users </h2>
 
-<div id="users">
+<div class="users">
 	<% for user in @users %>
-	<div class="user">
-		<p>
-			<strong><%=h user.username %></strong>
-			<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-			<div class="clear"></div>
-		</p>
-	</div>
+	  <div class="user">
+	    <p>
+	      <strong><%=h user.username %></strong>
+	      <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+	      <div class="clear"></div>
+	    </p>
+	  </div>
 	<% end %>
 </div>

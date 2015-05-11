@@ -34,10 +34,100 @@ header {
   float: left;
   margin: 0 -9999rem;
   padding: 0.25rem 9999rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 header h1 {
   font-family: 'Suplexmentary Comic NC', sans-serif;
   text-indent: 10px;
+  float: left;
+}
+
+#sign-in {
+  float: right;
+  margin-right: 10px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+#sign-in a {
+  color: #fff;
+  text-decoration:none;
+}
+
+.signout a {
+  color: #FBE403;
+  text-decoration: none;
+}
+
+#overlay {
+     visibility: hidden;
+     position: absolute;
+     width:50px;
+     height:50px;
+     background-color: #FBE403;
+     text-align:center;
+     z-index: 1000;
+}
+
+.users {
+  padding: 10px;
+}
+
+.users a {
+  color: #FBE403;
+  text-decoration: none;
+}
+
+#user-sidebar {
+  margin: 10px;
+  border: 1px solid #000;
+  width: 20%;
+  float: left;
+}
+
+#user-sidebar h2, #user-sidebar h3 {
+  text-align: center;
+  text-decoration: underline;
+  padding: 4px;
+}
+
+#friends-block p {
+  display: inline;
+  padding: 3px;
+}
+
+.unfriend, .unfriend a {
+  font-size: 10px;
+  text-decoration: none;
+  display: inline;
+  color: #000;
+}
+
+.find-friends, .find-friends a {
+  text-indent: 10px;
+  padding: 30%;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+
+
+#user-sidebar p {
+  text-indent: 3px;
+}
+
+.profile {
+  margin-bottom: 10px;
+}
+
+#comic-library {
+  border: 1px solid #000;
+  float: right;
+  width: 70%;
+  margin: 10px;
+}
+
+#comic-library h2 {
+  text-align: center;
 }

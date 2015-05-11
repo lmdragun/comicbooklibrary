@@ -11,8 +11,6 @@
 
   <%= link_to "forgot password?", new_password_reset_path %>
 
-  <%= label.tag :remember_me %>
-  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
 
   <%= f.submit 'Sign in', id: 'signin' %>
  <% end %>

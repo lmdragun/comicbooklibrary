@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-		has_many :comics, :through => :libraries
+		has_many :comics, through: :libraries
 		has_many :libraries
 		has_many :friendships
-		has_many :friends, :through => :friendships
-		has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-		has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+	  has_many :friends, :through => :friendships
+	  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+	  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
 
 		before_create :create_remember_token
@@ -26,9 +26,7 @@ class User < ActiveRecord::Base
 
 	#Create a new remember token for a user
 	def User.new_remember_token
-		begin
-			self[column] = SecureRandom.urlsafe_base64 #giving access to bcrypt
-		end while User.exists?(column => self[column])
+		SecureRandom.urlsafe_base64 #giving access to bcrypt
 	end
 
 	#Hashing a token

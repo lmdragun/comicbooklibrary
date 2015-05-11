@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :companies
 
   resources :users
+  resources :friendships
   resources :sessions, only: [:new, :create]
   resources :password_resets
 
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'
+  # patch '/addcomic', to: 'comics#new'
   # show '/profile', to: 'users#show'
 
   # Example of regular route:

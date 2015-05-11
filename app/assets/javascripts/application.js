@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// function overlay() {
+// 	link = document.getElementById("overlay");
+// 	link.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+// }
+
+document.getElementById("signin").addEventListener("click", modal);
+function modal(){
+	overlay = document.getElemenyById("overly");
+	link.style.visibility = (link.style.visibility == "visible") ? "hidden" : "visible";
+}

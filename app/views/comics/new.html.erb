@@ -4,10 +4,18 @@
 		<% end %>
 <% end %>
 
+<input id="search-title" placeholder="Title">
+<input id="search-creators" placeholder="Creators">
+<input type="submit" id="search-submit">
+
+<br>
+<br><br>
+
 <%= form_for [@comic] do |f| %>
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :creators %>
 	<%= f.text_field :creators %>
+	<%= f.collection_select :company_id, Company.order(:name),:name, include_blank: true %>
 	<%= f.submit %>
 <% end %>
