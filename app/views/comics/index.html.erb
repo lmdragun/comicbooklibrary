@@ -1,7 +1,19 @@
-<h1>All Comics:</h1>
+<h2>Search for a comic:</h2>
+<%= form_for(@comic, remote: true) do |f| %>
+	<div class="label"><%= f.label :series %></div>
+		<div class="input"><%= f.text_field :series %></div>
+	<div class="label"><%= f.label :creators %></div>
+		<div class="input"><%= f.text_field :creators %></div>
+	<div class="submit"><%= f.submit %></div>
+<% end %>
+<br><br><br>
+<input id="comic-series-input" placeholder="search-series"><input id="comic-creator-input" placeholder="search-creator">  <input type="submit" id="update-comic"><br>
+<br><br><br>
+<h1>Comics:</h1>
 <ul>
 	<% @comics.each do |c| %>
 	<li>
+		<!-- form (with hidden fields) (on submit makes request with user and comic IDs) -->
 		<%= c.title %>
 	</li>
 	<% end %>

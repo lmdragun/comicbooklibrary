@@ -131,3 +131,20 @@ header h1 {
 #comic-library h2 {
   text-align: center;
 }
+
+#new-comic-form {
+  width: 40%;
+  border: 1px solid #000;
+  padding: 10px;
+  margin-left: 30%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+#new-comic-form .label {
+  margin-top: 5px;
+}
+
+#new-comic-form .submit {
+  margin-top: 20px;
+}
