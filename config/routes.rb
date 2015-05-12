@@ -2,13 +2,16 @@ Rails.application.routes.draw do
 
   get 'password_resets/new'
 
-  resources :libraries
+
   get 'comics/lookup' => 'comics#lookup'
   resources :comics
 
   resources :companies
 
-  resources :users
+  resources :users do
+    resources :libraries
+    resources :usercomics
+  end
   resources :friendships
   resources :sessions, only: [:new, :create]
   resources :password_resets

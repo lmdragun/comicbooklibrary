@@ -30,6 +30,8 @@
 <div id="comic-library">
   <h2>Comic Library</h2>
   <% @libraries.each do |l| %>
-  <p><%= l.comic_id.title %></p>
+  <p><%= l.name %>:</p>
+  <p><%= l.comic_id %></p>
   <% end %>
+
 </div>

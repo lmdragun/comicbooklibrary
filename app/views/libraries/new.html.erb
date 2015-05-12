@@ -1,0 +1,7 @@
+<%= form_for [current_user, @library] do |f| %>
+	<div class="label"><%= f.label :name %></div>
+		<div class="input"><%= f.text_field :name %></div>
+	<div class="label"><%= f.label :note %></div>
+		<div class="input"><%= f.text_field :note %></div>
+	<div class="submit"><%= f.submit %></div>
+<% end %>

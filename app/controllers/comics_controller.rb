@@ -20,14 +20,13 @@ class ComicsController < ApplicationController
 
 	def new
 			@companies = Company.all
-			@user = current_user
-			@libraries = @user.libraries.all
-			@foundComic = Comic.find(params[:id])
 			@comic = Comic.new
+			@filed_comic = @library.comic_id
 	end
 
 	def create
 		@comic = Comic.new(comic_params)
+		@usercomic = current_user.usercomics.new(comic:@comic)
 		if @comic.save
 			redirect_to @comic
 		else
