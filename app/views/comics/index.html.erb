@@ -4,8 +4,10 @@
 		<div class="input"><%= f.text_field :series %></div>
 	<div class="label"><%= f.label :creators %></div>
 		<div class="input"><%= f.text_field :creators %></div>
-	<div class="submit"><%= f.submit %></div>
+	<div class="submit"><%= f.submit "Find Comics" %></div>
 <% end %>
+
+<%= @response %>
 <br><br><br>
 <input id="comic-series-input" placeholder="search-series"><input id="comic-creator-input" placeholder="search-creator">  <input type="submit" id="update-comic"><br>
 <br><br><br>

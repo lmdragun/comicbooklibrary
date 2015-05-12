@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
 
   get 'comics/lookup' => 'comics#lookup'
-  resources :comics
+  resources :comics do
+    resources :loan
+  end
 
   resources :companies
 

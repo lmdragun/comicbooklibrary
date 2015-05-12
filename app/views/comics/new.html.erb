@@ -8,22 +8,22 @@
 <div id="new-comic-form">
 <h2>Add a New Comic</h2>
 <%= form_for [@comic] do |f| %>
-	<div class="label"><%= f.label :title %></div>
-		<div class="input"><%= f.text_field :title %></div>
+	<div class="label"><%= f.label :series %></div>
+	<div class="input"><%= f.text_field :series %></div>
 	<div class="label"><%= f.label :number %></div>
 		<div class="input"><%= f.text_field :number %></div>
+	<div class="label"><%= f.label :title %></div>
+		<div class="input"><%= f.text_field :title %></div>
 	<div class="label"><%= f.label "Creator(s)" %></div>
 		<div class="input"><%= f.text_field :creators %></div>
 	<div class="label"><%= f.label :date_published %></div>
-		<div class="input"><%= f.text_field :date_published %></div>
+	<%= date_select :comic, :date_published, :start_year => 1933, :end_year => Date.current.year %>
 	<div class="label"><%= f.label "Year Series Started" %></div>
 		<div class="input"><%= f.text_field :year %></div>
-	<div class="label"><%= f.label :series %></div>
-		<div class="input"><%= f.text_field :series %></div>
 	<div class="label"><%= f.label "Url for Cover Image" %></div>
 		<div class="input"><%= f.text_field :cover_img_url %></div>
-	<div class="label">Company</div>
-	<div class="input"><%= collection_select(:post, :id, Company.all, :id, :name) %></div>
+	<div class="label">Select Company</div>
+	<div class="input"><%= collection_select(:post, :id, Company.order('name'), :id, :name) %><br /></div>
 	<div class="submit"><%= f.submit %></div>
 <% end %>
 

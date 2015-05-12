@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-		has_many :comics, through: :libraries
-		has_many :libraries
-		has_many :usercomics
+		has_many :comics, through: :user_comics
+		has_many :user_comics
 		has_many :loans
 		has_many :lendees, :through => :loans
 		has_many :lenders, :through => :loans
@@ -10,12 +9,12 @@ class User < ActiveRecord::Base
 	  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 	  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-
 		before_create :create_remember_token
 		before_save :normalize_fields
 
 		validates :username,
 			presence: true,
+			uniqueness: true,
 			length: { maximum: 40 }
 
 		validates :email,

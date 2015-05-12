@@ -28,10 +28,16 @@
 </div>
 
 <div id="comic-library">
-  <h2>Comic Library</h2>
-  <% @libraries.each do |l| %>
-  <p><%= l.name %>:</p>
-  <p><%= l.comic_id %></p>
-  <% end %>
+  <h3>Your Collection</h2>
 
+    <% @comics.each do |c| %>
+      <div class="comics">
+        <% if c.comic %>
+          <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
+        <% end %>
+          <p><%= c.note %></p>
+      </div>
+    <% end %>
+  <%= link_to "Add Comic", new_comic_path %>
+  <%= link_to "Find a comic to add", comics_path %>
 </div>

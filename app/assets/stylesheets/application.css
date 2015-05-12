@@ -124,12 +124,29 @@ header h1 {
 #comic-library {
   border: 1px solid #000;
   float: right;
-  width: 70%;
+  width: 60%;
   margin: 10px;
+  margin-right: 10%;
+  background-color: #000;
+  color: #fff;
 }
 
-#comic-library h2 {
+#comic-library h3 {
+  color: #FBE403;
   text-align: center;
+  font-family: 'Suplexmentary Comic NC', sans-serif;
+  font-size: 26px;
+  text-shadow: 2px 2px #333;
+}
+
+.comics {
+  padding: 10px;
+  text-indent: 30px;
+}
+
+.comics img {
+  max-width: 100px;
+  max-height: 100px;
 }
 
 #new-comic-form {
@@ -147,4 +164,35 @@ header h1 {
 
 #new-comic-form .submit {
   margin-top: 20px;
+}
+
+
+
+.modal a.close-modal[class*="icon-"] {
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+  background: #900;
+  border: 2px solid #fff;
+  -webkit-border-radius:  26px;
+  -moz-border-radius:     26px;
+  -o-border-radius:       26px;
+  -ms-border-radius:      26px;
+  -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.fill-in {
+  display: block;
+}
+
+.sign-in {
+  display: block;
 }

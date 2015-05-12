@@ -14,13 +14,12 @@
         <p><%= link_to current_user.username, current_user %></p>
         <p class="signout"><%= link_to "Sign Out", signout_path, method: :delete %></p>
       <% else %>
-        <a href='#' id="signin">Sign In/Sign Up</a>
-        <div id="overlay">
-          <div>
-            <li><%= link_to "Sign In", new_session_path %></li>
-            <a href='#'>&#215;</a>
-          </div>
+        <div id="login" style="display:none;">
+          <p><a href="/signup">Sign Up</a></p>
+          <%= render "shared/login" %>
         </div>
+        <!-- Link to open the modal -->
+        <p><a href="#login" rel="modal:open">Login</a></p>
       <% end %>
     </div>
   </header>

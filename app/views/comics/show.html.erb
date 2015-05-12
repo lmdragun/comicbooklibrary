@@ -1,3 +1,5 @@
-<h2>Title: <%= @comic.title %></h2>
-<h2>Creator(s): <%= @comic.creators %></h2>
-<h2>Date Published: <%= @comic.date_published %></h2>
+<img src="<%= @comic.cover_img_url%>">
+<h2><%= @comic.series %> (<%= @comic.year %>) #<%= @comic.number %></h2>
+<h2>By: <%= @comic.creators %></h2>
+<h2><%= @comic.date_published %></h2>
+<h3>Loan to a friend</h3>

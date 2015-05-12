@@ -1,18 +1,17 @@
 <h1>Sign in</h1>
 
  <%= render 'common/flash' %>
-
- <%= form_for :session, url: sessions_path do |f| %>
+<div class="fill-in">
+  <%= form_for :session, url: sessions_path do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
-
+</div>
+<div class="sign-in">
   <%= link_to "forgot password?", new_password_reset_path %>
 
-  <%= label.tag :remember_me %>
-  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-
   <%= f.submit 'Sign in', id: 'signin' %>
+</div>
  <% end %>

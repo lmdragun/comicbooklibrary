@@ -7,7 +7,7 @@ end
 
 def show
 	@user = User.find(params[:id])
-	@libraries = @user.libraries.all
+	@comics = @user.user_comics.all
 end
 
 def new

@@ -3,15 +3,21 @@ class ComicsController < ApplicationController
 	def index
 		@comics = Comic.all
 		@comic = Comic.new
-
+		# secret_key = ENV['comicvine_key']
+		# @search_series = params[:series].to_s
+		# @search_creators = params[:creators].to_s
+		# @url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + @search_series + @search_creators
+		#
+		# @response = HTTParty.get(@url).parsed_response["results"]
+		# p @response
 	end
 
 	def lookup
 		@result = Comic.identify
 		respond_to do |format|
-		format.html {render :index}
-		format.json {render json: @result.parsed_response}
-	end
+			format.html {render :index}
+			format.json {render json: @result.parsed_response}
+		end
 	end
 
 	def show
@@ -21,13 +27,12 @@ class ComicsController < ApplicationController
 	def new
 			@companies = Company.all
 			@comic = Comic.new
-			@filed_comic = @library.comic_id
 	end
 
 	def create
 		@comic = Comic.new(comic_params)
-		@usercomic = current_user.usercomics.new(comic:@comic)
-		if @comic.save
+		@usercomic = current_user.user_comics.new(comic:@comic)
+		if @usercomic.save
 			redirect_to @comic
 		else
 			render :new
