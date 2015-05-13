@@ -1,13 +1,10 @@
 class User < ActiveRecord::Base
-		has_many :comics, through: :user_comics
-		has_many :user_comics
-		has_many :loans
-		has_many :lendees, :through => :loans
-		has_many :lenders, :through => :loans
-		has_many :friendships
-	  has_many :friends, :through => :friendships
-	  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-	  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+		has_many :comics, through: :ownerships
+		has_many :ownerships
+		has_many :lendees
+		has_many :lenders
+		has_many :loans, :through => :lenders
+		has_many :loans, :through => :lendees
 		has_many :follows
 		has_many :followed, :through => :follows
 		has_many :inverse_follows, :class_name => "Follow", :foreign_key => "followed_id"

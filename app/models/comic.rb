@@ -1,6 +1,6 @@
 class Comic < ActiveRecord::Base
-	has_many :user_comics
-	has_many :users, :through => :user_comics
+	has_many :ownerships
+	has_many :users, :through => :ownerships
 	has_many :loans
 	belongs_to :company
 

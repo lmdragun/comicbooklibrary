@@ -41,8 +41,8 @@ class ComicsController < ApplicationController
 	def create
 		@company = params[:post][:id]
 		@comic = Comic.new(comic_params, company_id: @company)
-		@usercomic = current_user.user_comics.new(comic:@comic)
-		if @usercomic.save
+		@ownership = current_user.ownerships.new(comic:@comic)
+		if @ownership.save
 			redirect_to @comic
 		else
 			render :new

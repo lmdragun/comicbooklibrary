@@ -1,6 +1,6 @@
-function UserComics() {
-	this.fetchUserComics();
-	console.log("in UserComics Model");
+function Ownerships() {
+	this.fetchOwnerships();
+	console.log("in Ownerships Model");
 }
 
 // UserComics.prototype = {

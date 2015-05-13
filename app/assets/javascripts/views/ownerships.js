@@ -1,19 +1,19 @@
-var UserComicsView = function(userComicsModel){
+var OwnershipsView = function(ownershipsModel){
 	// this.series = document.getElementById("comic-series-input").value;
 	this.library = $("#comic-library");
 	this.model = userComicsModel;
-	console.log("UserComicsView")
+	console.log("OwnershipsView")
 	this.fetchUserComics();
 }
 
-UserComicsView.lookupComic = function() {
+OwnershipsView.lookupComic = function() {
 	console.log("lookupComic function");
-	$("#user-show").addEventListener("load", fetchUserComics());
+	$("#user-show").addEventListener("load", fetchOwnerships());
 	console.log("fetched comic!")
 }
 
 
-UserComicsView.fetchUserComics =  function(){
+OwnershipsView.fetchUserComics =  function(){
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',

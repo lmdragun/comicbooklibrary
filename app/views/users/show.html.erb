@@ -36,7 +36,7 @@
           <% if c.comic %>
             <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
             <a href="/comics/<%= c.comic.id %>/loans/new">Loan This</a>
-            <%= link_to "Loan", new_comic_loan_path(c) %>
+
           <% end %>
             <p><%= c.note %></p>
         </div>
@@ -49,7 +49,7 @@
   </div>
 </div>
 
-// <script>
+ <script>
 //   $(document).ready({
 //     UserComicsView.lookupComic();
 //   })

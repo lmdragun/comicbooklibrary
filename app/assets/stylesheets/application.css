@@ -47,8 +47,10 @@ header {
   overflow: hidden;
 }
 
-header h1 {
+header h1 a {
   font-family: 'Suplexmentary Comic NC', sans-serif;
+  color: #FBE403;
+  text-decoration: none;
   text-indent: 10px;
   float: left;
 }
@@ -172,9 +174,8 @@ header h1 {
 #new-comic-form {
   width: 40%;
   border: 1px solid #000;
-  padding: 10px;
+  padding: 50px 10px 10px 10px;
   margin-left: 30%;
-  margin-top: 10%;
   text-align: center;
 }
 

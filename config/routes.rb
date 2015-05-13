@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   resources :companies
 
   resources :users do
-    resources :libraries
-    resources :user_comics
+    resources :ownerships
   end
   resources :friendships
   resources :follows

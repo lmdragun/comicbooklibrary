@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513150740) do
+ActiveRecord::Schema.define(version: 20150513204557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comics", force: :cascade do |t|
-    t.string  "title"
-    t.integer "number"
-    t.string  "creators"
-    t.string  "date_published"
-    t.integer "year"
     t.string  "series"
+    t.integer "number"
+    t.integer "year"
+    t.string  "creators"
     t.integer "company_id"
+    t.string  "title"
+    t.string  "date_published"
     t.string  "cover_img_url"
   end
 
@@ -47,31 +47,33 @@ ActiveRecord::Schema.define(version: 20150513150740) do
     t.datetime "updated_at"
   end
 
-  create_table "libraries", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.integer  "comic_id"
-    t.text     "note"
-    t.boolean  "wishlist"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "lendees", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "loan_id"
+  end
+
+  create_table "lenders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "loan_id"
   end
 
   create_table "loans", force: :cascade do |t|
     t.integer  "lender_id"
     t.integer  "lendee_id"
-    t.integer  "comic_id"
+    t.integer  "ownership_id"
     t.boolean  "out"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_comics", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "comic_id"
-    t.string  "location"
-    t.text    "note"
-    t.boolean "favorite"
+  create_table "ownerships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comic_id"
+    t.string   "location"
+    t.text     "note"
+    t.boolean  "favorite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

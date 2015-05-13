@@ -1,5 +1,5 @@
 class Loan < ActiveRecord::Base
-	belongs_to :lender, :class_name => "User"
-  belongs_to :lendee, :class_name => "User"
-	belongs_to :comic
+	has_one :lender
+  has_one :lendee
+	belongs_to :ownership
 end

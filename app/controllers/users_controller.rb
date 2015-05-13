@@ -7,7 +7,7 @@ end
 
 def show
 	@user = User.find(params[:id])
-	@comics = @user.user_comics.all
+	@comics = @user.ownerships.all
 	@loans = Loan.where(lender_id: @user.id)
 end
 
