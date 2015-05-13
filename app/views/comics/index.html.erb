@@ -22,7 +22,11 @@
 </ul>
 <script>
 $(document).ready(function(){
-	var comic = new Comic("yo");
-	comic.fetchComic();
+	var seriesInput = $('#comic_series');
+	var creatorsInput = $('#comic_creators')
+	$('#new_comic').submit(function(event){
+		event.preventDefault();
+		Comic.fetchComics(seriesInput.val(), creatorsInput.val());
+	});
 })
 </script>

@@ -1,4 +1,4 @@
 $(document).ready(function(){
-	var comicview = new ComicView();
-	var usercomicsview = new UserComicsView();
+	// var comicview = new ComicView();
+	// var usercomicsview = new UserComicsView();
 })

@@ -1,0 +1,7 @@
+Choose who to loan <%= @comic.series %> (<%= @comic.year %>) #<%= @comic.number %> to:
+
+<%= form_for [@comic, @loan] do |f| %>
+	<div class="label">Select User</div>
+	<div class="input"><%= collection_select(:post, :id, User.order('username'), :id, :username) %><br /></div>
+	<div class="submit"><%= f.submit %></div>
+<% end %>

@@ -7,15 +7,14 @@ class Comic < ActiveRecord::Base
 	validates :series, presence: true
 	validates :year, length: { maximum: 4 }
 
-	def self.identify
+	def self.identify(search_series, search_creators)
 		secret_key = ENV['comicvine_key']
-		@search_series = params[:series].to_s
-		@search_creators = params[:creators].to_s
-		@url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + @search_series + @search_creators
+		url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + search_series + search_creators
+debugger
+		comic_vine_response = HTTParty.get(url)
+		comic_vine_comics = comic_vine_response["results"]
 
-		response = HTTParty.get(@url).parsed_response["results"]
-
-		return response
+		return comic_vine_response
 	end
 
 end

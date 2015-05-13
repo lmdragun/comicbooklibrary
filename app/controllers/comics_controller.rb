@@ -18,10 +18,14 @@ class ComicsController < ApplicationController
 	end
 
 	def lookup
-		@result = Comic.identify
+		@result = Comic.identify(
+			params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
+			params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		)
+
 		respond_to do |format|
 			format.html {render :index}
-			format.json {render json: @result.parsed_response}
+			format.json {render json: @result}
 		end
 	end
 
@@ -44,10 +48,21 @@ class ComicsController < ApplicationController
 		end
 	end
 
+	def edit
+
+	end
+
+	def update
+		@comic.update(comic_params)
+		redirect_to @comic
+	end
+
+
+
 	private
 
 	def comic_params
-	params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url)
-end
+		params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url)
+	end
 
 end

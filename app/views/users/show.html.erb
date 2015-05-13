@@ -7,26 +7,6 @@
     </div>
 
   <div id="follows-block">
-    <!-- <h3>Friends</h3>
-    <ul>
-      <% for friendship in @user.friendships %>
-        <li>
-          <p><%=h friendship.friend.username %></p>
-          <div class="unfriend">(<%= link_to "remove", friendship, :method => :delete %>)</div>
-        </li>
-      <% end %>
-    </ul>
-
-    <p class="find-friends"><%= link_to "Find Friends", users_path %></p>
-
-    <h3>Friends Of</h3>
-      <ul>
-        <% for user in @user.inverse_friends %>
-          <li><%=h user.username %></li>
-        <% end %>
-      </ul>
-    </div> -->
-
     <h3>Following</h3>
     <ul>
       <% for follow in @user.follows %>
@@ -55,6 +35,8 @@
         <div class="comics">
           <% if c.comic %>
             <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
+            <a href="/comics/<%= c.comic.id %>/loans/new">Loan This</a>
+            <%= link_to "Loan", new_comic_loan_path(c) %>
           <% end %>
             <p><%= c.note %></p>
         </div>
@@ -63,3 +45,9 @@
     <%= link_to "Find a comic to add", comics_path %>
   </div>
 </div>
+
+// <script>
+//   $(document).ready({
+//     UserComicsView.lookupComic();
+//   })
+// </script>
