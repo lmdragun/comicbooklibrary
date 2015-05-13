@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 	  has_many :friends, :through => :friendships
 	  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 	  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+		has_many :follows
+		has_many :followed, :through => :follows
+		has_many :inverse_follows, :class_name => "Follow", :foreign_key => "followed_id"
+		has_many :followers, :through => :inverse_follows, :source => :user
 
 		before_create :create_remember_token
 		before_save :normalize_fields

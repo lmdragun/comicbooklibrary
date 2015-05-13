@@ -17,7 +17,17 @@
  @font-face {
   font-family: 'Suplexmentary Comic NC';
   src:
-  url('/assets/fonts/SuplexmentaryComicNC.ttf') format('truetype');
+  url('/assets/fonts/SuplexmentaryComicNC.ttf') format('truetype'),
+     url('/assets/fonts/suplexmentarycomicnc.woff') format('woff'),
+     url('/assets/fonts/suplexmentarycomicnc.svg') format('svg');
+}
+
+@font-face {
+ font-family: 'Komikabb';
+ src:
+ url('/assets/fonts/KOMIKABB.ttf') format('truetype'),
+    url('/assets/fonts/komikabb.ttf') format('woff'),
+    url('/assets/fonts/komikabb.svg') format('svg');
 }
 
 * {
@@ -32,8 +42,8 @@ header {
   background-color: #000;
   color: #FBE403;
   float: left;
-  margin: 0 -2000rem;
-  padding: 0.25rem 2000rem;
+  margin: 0 rem;
+  padding: 0.25rem;
   overflow: hidden;
 }
 
@@ -70,6 +80,11 @@ header h1 {
      z-index: 1000;
 }
 
+#user-show a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .users {
   padding: 10px;
 }
@@ -84,27 +99,31 @@ header h1 {
   border: 1px solid #000;
   width: 20%;
   float: left;
+  background-color: #000;
+  color: #fff;
 }
 
 #user-sidebar h2, #user-sidebar h3 {
   text-align: center;
   text-decoration: underline;
-  padding: 4px;
+  padding: 6px;
+  color: #FBE403;
+  font-family: 'Suplexmentary Comic NC', sans-serif;
 }
 
-#friends-block p {
+#follows-block p {
   display: inline;
   padding: 3px;
 }
 
-.unfriend, .unfriend a {
+.unfollow, .unfollow a {
   font-size: 10px;
   text-decoration: none;
   display: inline;
   color: #000;
 }
 
-.find-friends, .find-friends a {
+.find-users, .find-users a {
   text-indent: 10px;
   padding: 30%;
   font-size: 14px;

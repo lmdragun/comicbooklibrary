@@ -10,6 +10,11 @@ class ComicsController < ApplicationController
 		#
 		# @response = HTTParty.get(@url).parsed_response["results"]
 		# p @response
+
+		respond_to do |format|
+			format.html { render :index }
+			format.json { render json: @comics }
+		end
 	end
 
 	def lookup

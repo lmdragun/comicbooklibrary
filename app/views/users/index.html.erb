@@ -5,7 +5,8 @@
 	  <div class="user">
 	    <p>
 	      <strong><%=h user.username %></strong>
-	      <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+	      <!-- <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %> -->
+				<%= link_to "Follow", follows_path(:followed_id => user), :method => :post %>
 	      <div class="clear"></div>
 	    </p>
 	  </div>

@@ -36,6 +36,7 @@ gem 'jquery-turbolinks'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rspec-rails', :group => [:test, :development]
+gem 'selenium-webdriver'
 
 group :development, :test do
   gem 'factory_girl_rails'

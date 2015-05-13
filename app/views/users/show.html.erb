@@ -1,43 +1,65 @@
-<div id="user-sidebar">
-  <div class="profile">
-    <h2><%= @user.username %>'s Profile</h2>
+<div id="user-show">
+  <div id="user-sidebar">
+    <div class="profile">
+      <h2><%= @user.username %>'s Profile</h2>
 
-  <p><strong>Member Since:</strong> <%= @user.created_at.strftime("%B %Y") %></p>
-  </div>
+    <p><strong>Member Since:</strong> <%= @user.created_at.strftime("%B %Y") %></p>
+    </div>
 
-<div id="friends-block">
-  <h3>Friends</h3>
-  <ul>
-    <% for friendship in @user.friendships %>
-      <li>
-        <p><%=h friendship.friend.username %></p>
-        <div class="unfriend">(<%= link_to "remove", friendship, :method => :delete %>)</div>
-      </li>
-    <% end %>
-  </ul>
-
-  <p class="find-friends"><%= link_to "Find Friends", users_path %></p>
-
-  <h3>Friends Of</h3>
+  <div id="follows-block">
+    <!-- <h3>Friends</h3>
     <ul>
-      <% for user in @user.inverse_friends %>
-        <li><%=h user.username %></li>
+      <% for friendship in @user.friendships %>
+        <li>
+          <p><%=h friendship.friend.username %></p>
+          <div class="unfriend">(<%= link_to "remove", friendship, :method => :delete %>)</div>
+        </li>
       <% end %>
     </ul>
-  </div>
-</div>
 
-<div id="comic-library">
-  <h3>Your Collection</h2>
+    <p class="find-friends"><%= link_to "Find Friends", users_path %></p>
 
-    <% @comics.each do |c| %>
-      <div class="comics">
-        <% if c.comic %>
-          <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
+    <h3>Friends Of</h3>
+      <ul>
+        <% for user in @user.inverse_friends %>
+          <li><%=h user.username %></li>
         <% end %>
-          <p><%= c.note %></p>
-      </div>
-    <% end %>
-  <%= link_to "Add Comic", new_comic_path %>
-  <%= link_to "Find a comic to add", comics_path %>
+      </ul>
+    </div> -->
+
+    <h3>Following</h3>
+    <ul>
+      <% for follow in @user.follows %>
+        <li>
+          <p><%=h follow.followed.username %></p>
+          <div class="unfollow">(<%= link_to "remove", follow, :method => :delete %>)</div>
+        </li>
+      <% end %>
+    </ul>
+
+    <p class="find-users"><%= link_to "Find Users to Follow", users_path %></p>
+
+    <h3>Followed By</h3>
+      <ul>
+        <% for user in @user.followers %>
+          <li><%=h user.username %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div id="comic-library">
+    <h3>Your Collection</h2>
+
+      <% @comics.each do |c| %>
+        <div class="comics">
+          <% if c.comic %>
+            <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
+          <% end %>
+            <p><%= c.note %></p>
+        </div>
+      <% end %>
+    <%= link_to "Add Comic", new_comic_path %>
+    <%= link_to "Find a comic to add", comics_path %>
+  </div>
 </div>

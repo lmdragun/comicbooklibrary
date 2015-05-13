@@ -1,9 +1,11 @@
 class CreateLoan < ActiveRecord::Migration
   def change
     create_table :loans do |t|
-      t.references :lender_id
-      t.references :lendee_id
+      t.integer :lender_id
+      t.integer :lendee_id
       t.references :comic
+      t.boolean :out
+      t.timestamps
     end
   end
 end

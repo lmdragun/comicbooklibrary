@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :libraries
-    resources :usercomics
+    resources :user_comics
   end
   resources :friendships
+  resources :follows
   resources :sessions, only: [:new, :create]
   resources :password_resets
 

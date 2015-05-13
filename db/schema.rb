@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512170819) do
+ActiveRecord::Schema.define(version: 20150513150740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20150512170819) do
     t.string  "logo_url"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -51,9 +58,12 @@ ActiveRecord::Schema.define(version: 20150512170819) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.integer "lender_id_id"
-    t.integer "lendee_id_id"
-    t.integer "comic_id"
+    t.integer  "lender_id"
+    t.integer  "lendee_id"
+    t.integer  "comic_id"
+    t.boolean  "out"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_comics", force: :cascade do |t|
