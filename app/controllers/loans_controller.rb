@@ -12,11 +12,11 @@ class LoansController < ApplicationController
 	end
 
 	def create
+
 		@comic = Comic.find(params[:comic_id])
-		@lender = current_user
-		@loan = Loan.new(lender_id: @lender.id, lendee_id: params[:lendee], comic_id: @comic.id, out: true)
+		@loan = Loan.new(lender_id: current_user.id, lendee_id: params[:post][:id], comic_id: @comic.id, out: true)
 		if @loan.save
-			redirect_to @lender
+			redirect_to current_user
 		else
 			render :new
 		end

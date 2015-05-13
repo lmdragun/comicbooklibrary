@@ -43,6 +43,9 @@
       <% end %>
     <%= link_to "Add Comic", new_comic_path %>
     <%= link_to "Find a comic to add", comics_path %>
+    <% @loans.each do |l| %>
+      <p><%= l.comic_id %> <%= l.lender_id %> <%= l.lendee_id %></p>
+    <% end %>
   </div>
 </div>
 

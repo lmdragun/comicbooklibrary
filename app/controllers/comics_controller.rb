@@ -39,7 +39,8 @@ class ComicsController < ApplicationController
 	end
 
 	def create
-		@comic = Comic.new(comic_params)
+		@company = params[:post][:id]
+		@comic = Comic.new(comic_params, company_id: @company)
 		@usercomic = current_user.user_comics.new(comic:@comic)
 		if @usercomic.save
 			redirect_to @comic

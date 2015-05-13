@@ -8,6 +8,7 @@ end
 def show
 	@user = User.find(params[:id])
 	@comics = @user.user_comics.all
+	@loans = Loan.where(lender_id: @user.id)
 end
 
 def new

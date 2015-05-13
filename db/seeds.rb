@@ -18,4 +18,4 @@ company4 = Company.create(name: 'DC Comics', year_founded: 1934, logo_url: 'http
 company5 = Company.create(name: 'Dark Horse Comics', year_founded: 1986, logo_url: 'http://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Dark_Horse_Comics_logo.svg/200px-Dark_Horse_Comics_logo.svg.png')
 company6 = Company.create(name: 'Top Cow Productions', year_founded: 1992, logo_url: 'http://cdn.bleedingcool.net/wp-content/uploads/2012/07/top-cow-logo.jpg')
 company7 = Company.create(name: 'IDW Publishing', year_founded: 1999, logo_url: 'http://media.comicbook.com/wp-content/uploads/2013/10/IDW-banner.jpg')
-user1 = User.create(email: 'blah@blah.com', password: '12345678', username: 'blah')
+user1 = User.create(email: 'blah@blah.com', password: '12345678', username: 'UserTest')
