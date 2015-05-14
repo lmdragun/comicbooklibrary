@@ -1,4 +1,4 @@
-require 'spec helper'
+require 'spec_helper'
 require '../app/controllers/users_controller'
 
 describe "User" do

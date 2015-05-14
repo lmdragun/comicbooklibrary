@@ -10,11 +10,32 @@ class OwnershipsController < ApplicationController
 		end
 	end
 
-	def edit
+# currently found in the comics controller
+	def new
+	end
+	def create
+	end
 
+	def edit
+		@ownership = current_user.ownerships.find(params[:id])
 	end
 
 	def update
+		@ownership = current_user.ownerships.find( params[:id] )
+		if @ownership.update( ownership_params )
+			redirect_to @current_user
+		else
+			render :edit
+		end
+
 	end
 
+	private
+	  def ownership_params
+	    params.require(:ownership).permit(
+			:note,
+			:location,
+			:favorite
+			)
+		end
 end

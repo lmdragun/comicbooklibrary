@@ -17,4 +17,5 @@ debugger
 		return comic_vine_response
 	end
 
+
 end

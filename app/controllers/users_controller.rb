@@ -7,8 +7,16 @@ end
 
 def show
 	@user = User.find(params[:id])
-	@comics = @user.ownerships.all
+	@owned = @user.ownerships.all
+	@comics_sorted = @user.comics.sort_by { |comic| comic.series.capitalize }
+
+
+	# @ordered_comics = @owned_comics.comics.order(series: :desc)
+
+
 	@loans = Loan.where(lender_id: @user.id)
+	# @loans_ownership = @user.ownerships.find(@loans).comic_id
+	# @loans_comic = Comic.where()
 end
 
 def new

@@ -19,6 +19,7 @@ class ComicsController < ApplicationController
 
 	def lookup
 		@result = Comic.identify(
+			# taking out spaces, replacing with dashes
 			params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
 			params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
 		)
@@ -36,12 +37,13 @@ class ComicsController < ApplicationController
 	def new
 			@companies = Company.all
 			@comic = Comic.new
+			@ownership = current_user.ownerships.new
 	end
 
 	def create
 		@company = params[:post][:id]
 		@comic = Comic.new(comic_params, company_id: @company)
-		@ownership = current_user.ownerships.new(comic:@comic)
+		@ownership = current_user.ownerships.new(ownership_params, comic:@comic)
 		if @ownership.save
 			redirect_to @comic
 		else
@@ -64,6 +66,10 @@ class ComicsController < ApplicationController
 
 	def comic_params
 		params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url)
+	end
+
+	def ownership_params
+		params.required(:ownership).permit(:location, :favorite, :note)
 	end
 
 end

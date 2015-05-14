@@ -7,7 +7,7 @@
 
 <div id="new-comic-form">
 <h2>Add a New Comic</h2>
-<%= form_for [@comic] do |f| %>
+<%= form_for [@comic, @ownership] do |f| %>
 	<div class="label"><%= f.label :series %></div>
 	<div class="input"><%= f.text_field :series %></div>
 	<div class="label"><%= f.label :number %></div>
@@ -24,6 +24,15 @@
 		<div class="input"><%= f.text_field :cover_img_url %></div>
 	<div class="label">Select Company</div>
 	<div class="input"><%= collection_select(:post, :id, Company.order('name'), :id, :name) %><br /></div>
+	<%= f.label :location %>
+	<%= f.text_area :location %>
+	<%= f.label :note %>
+	<%= f.text_area :note %>
+	<%= label :favorite, "Favorite?" %>
+	<%= label :favorite, "Yes"%>
+	<%= f.radio_button :favorite, true, :value => true%>
+	<%= label :favorite, "No"%>
+	<%= f.radio_button :favorite, false, :value => false%>
 	<div class="submit"><%= f.submit %></div>
 <% end %>
 

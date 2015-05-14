@@ -30,26 +30,49 @@
 
   <div id="comic-library">
     <h3>Your Collection</h2>
-
-      <% @comics.each do |c| %>
-        <div class="comics">
-          <% if c.comic %>
-            <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a>
-            <div class="comic-info">
-              <strong><%= c.comic.series %> (<%= c.comic.year %>)</strong> #<%= c.comic.number %> <%= c.comic.title %>
-              <a href="/comics/<%= c.comic.id %>/loans/new" class="loan">Loan This</a>
-              <a href="/users/<%= current_user.id %>/ownerships/<%= c.id %>/edit">Edit This</a>
-            </div>
-          <% end %>
-            <p><strong>Notes:</strong><%= c.note %></p>
-        </div>
-      <% end %>
+      <table>
+        <th></th>
+        <th>Series</th>
+        <th>Issue</th>
+        <th>Info</th>
+        <th></th>
+        <% @comics_sorted.each do |c| %>
+        <tr>
+              <td>
+                <a href="/comics/<%= c.id %>"><img src="<%= c.cover_img_url%>"></a>
+              </td>
+              <td class="comic-series-td">
+                <strong><%= c.series %> ( <%= c.year %> )</strong>
+                <!-- Would move the following logic to a model if it wasn't so dependent on the if statement -->
+                <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
+                <% if ownership.favorite == true %>
+                <span class="comic-fav"> f </span>
+                <% end %>
+              </td>
+              <td class="comic-issue-td">
+                #<%= c.number %> <%= c.title %>
+              </td>
+              <td class="comic-notes-td">
+              <% if ownership.location %>
+                  <p><strong>Location: </strong><%= ownership.location %></p>
+                <% end %>
+                <% if ownership.note %>
+                  <p><strong>Notes: </strong><%#= ownership.note %></p>
+                <% end %>
+              </td>
+              <td class="comic-links">
+                <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
+                <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
+              </td>
+        </tr>
+        <% end %>
+      </table>
     <div class="add-comic">
       <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
-      <p class="btn"><%= link_to "Find a comic to add", comics_path %></p>
+      <p class="btn"><%= link_to "Find Comic", comics_path %></p>
     </div>
     <% @loans.each do |l| %>
-      <p><%= l.comic_id %> <%= l.lender_id %> <%= l.lendee_id %></p>
+      <p>Ownership ID: <%= l.ownership_id %> Lender ID: <%= l.lender_id %> Lendee ID:<%= l.lendee_id %></p>
     <% end %>
   </div>
 </div>
