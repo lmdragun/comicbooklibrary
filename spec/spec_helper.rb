@@ -5,7 +5,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 
-Conventionally, all
+# Conventionally, all
 # specs live under a `spec` directory, which RSpec adds to the `$LOAD_PATH`.
 # The generated `.rspec` file contains `--require spec_helper` which will cause
 # this file to always be loaded, without a need to explicitly require it in any

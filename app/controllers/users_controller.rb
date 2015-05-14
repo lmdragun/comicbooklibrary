@@ -31,7 +31,12 @@ end
 def update
 end
 
+# for future Admin privileges
 def destroy
+	@user = User.find(params[:id])
+	@user.destroy
+	redirect_to root_url
+
 end
 
 private
