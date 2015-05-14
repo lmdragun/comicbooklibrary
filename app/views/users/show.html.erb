@@ -17,7 +17,7 @@
       <% end %>
     </ul>
 
-    <p class="find-users"><%= link_to "Find Users to Follow", users_path %></p>
+    <div class="find-users"><%= link_to "Find Users to Follow", users_path %></div>
 
     <h3>Followed By</h3>
       <ul>
@@ -34,15 +34,20 @@
       <% @comics.each do |c| %>
         <div class="comics">
           <% if c.comic %>
-            <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a><%= c.comic.series %> (<%= c.comic.year %>) #<%= c.comic.number %> <%= c.comic.title %>
-            <a href="/comics/<%= c.comic.id %>/loans/new">Loan This</a>
-
+            <a href="/comics/<%= c.comic.id %>"><img src="<%= c.comic.cover_img_url%>"></a>
+            <div class="comic-info">
+              <strong><%= c.comic.series %> (<%= c.comic.year %>)</strong> #<%= c.comic.number %> <%= c.comic.title %>
+              <a href="/comics/<%= c.comic.id %>/loans/new" class="loan">Loan This</a>
+              <a href="/users/<%= current_user.id %>/ownerships/<%= c.id %>/edit">Edit This</a>
+            </div>
           <% end %>
-            <p><%= c.note %></p>
+            <p><strong>Notes:</strong><%= c.note %></p>
         </div>
       <% end %>
-    <%= link_to "Add Comic", new_comic_path %>
-    <%= link_to "Find a comic to add", comics_path %>
+    <div class="add-comic">
+      <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
+      <p class="btn"><%= link_to "Find a comic to add", comics_path %></p>
+    </div>
     <% @loans.each do |l| %>
       <p><%= l.comic_id %> <%= l.lender_id %> <%= l.lendee_id %></p>
     <% end %>

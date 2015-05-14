@@ -14,6 +14,7 @@
  *= require_self
  */
 
+/* Title font */
  @font-face {
   font-family: 'Suplexmentary Comic NC';
   src:
@@ -34,6 +35,8 @@
   padding: 0;
   margin: 0;
 }
+
+/* Universal Top Bar */
 
 header {
   min-width: 100%;
@@ -82,6 +85,31 @@ header h1 a {
      z-index: 1000;
 }
 
+/* Sign-in modal */
+
+.modal a.close-modal[class*="icon-"] {
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+  background: #900;
+  border: 2px solid #fff;
+  -webkit-border-radius:  26px;
+  -moz-border-radius:     26px;
+  -o-border-radius:       26px;
+  -ms-border-radius:      26px;
+  -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Users Show Page */
+
 #user-show a {
   color: #fff;
   text-decoration: none;
@@ -95,6 +123,8 @@ header h1 a {
   color: #FBE403;
   text-decoration: none;
 }
+
+/* Sidebar on user's show page */
 
 #user-sidebar {
   margin: 10px;
@@ -127,13 +157,11 @@ header h1 a {
 
 .find-users, .find-users a {
   text-indent: 10px;
-  padding: 20%;
+  padding: 10%;
   font-size: 14px;
   text-decoration: none;
   font-variant: small-caps;
 }
-
-
 
 #user-sidebar p {
   text-indent: 3px;
@@ -142,6 +170,8 @@ header h1 a {
 .profile {
   margin-bottom: 10px;
 }
+
+/* User's collection */
 
 #comic-library {
   border: 1px solid #000;
@@ -169,6 +199,61 @@ header h1 a {
 .comics img {
   max-width: 100px;
   max-height: 100px;
+  display: inline-block;
+  float:left;
+  position: relative;
+}
+
+.comic-info {
+  float:left;
+  position:relative;
+}
+
+
+.loan {
+  display: block;
+  font-size: 13px;
+}
+
+.add-comic {
+  text-align: center;
+  padding: 5px;
+}
+
+.btn {
+  background: #FBE403;
+  background-image: -webkit-linear-gradient(top, #FBE403, #cfba00);
+  background-image: -moz-linear-gradient(top, #FBE403, #cfba00);
+  background-image: -ms-linear-gradient(top, #FBE403, #cfba00);
+  background-image: -o-linear-gradient(top, #FBE403, #cfba00);
+  background-image: linear-gradient(to bottom, #FBE403, #cfba00);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px auto;
+  text-decoration: none;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+.btn:hover {
+  background: #000000;
+  background-image: -webkit-linear-gradient(top, #000000, #FBE403);
+  background-image: -moz-linear-gradient(top, #000000, #FBE403);
+  background-image: -ms-linear-gradient(top, #000000, #FBE403);
+  background-image: -o-linear-gradient(top, #000000, #FBE403);
+  background-image: linear-gradient(to bottom, #000000, #FBE403);
+  text-decoration: none;
+}
+
+/* Adding a new comic */
+
+.fill-in {
+  display: block;
 }
 
 #new-comic-form {
@@ -185,35 +270,4 @@ header h1 a {
 
 #new-comic-form .submit {
   margin-top: 20px;
-}
-
-
-
-.modal a.close-modal[class*="icon-"] {
-  top: -10px;
-  right: -10px;
-  width: 20px;
-  height: 20px;
-  color: #fff;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  text-indent: 0;
-  background: #900;
-  border: 2px solid #fff;
-  -webkit-border-radius:  26px;
-  -moz-border-radius:     26px;
-  -o-border-radius:       26px;
-  -ms-border-radius:      26px;
-  -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-  box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
-}
-
-.fill-in {
-  display: block;
-}
-
-.sign-in {
-  display: block;
 }
