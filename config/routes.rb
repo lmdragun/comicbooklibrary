@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :loans
   end
 
+  resources :loans
+
   resources :companies
 
   resources :users do

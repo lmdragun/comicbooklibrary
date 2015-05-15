@@ -45,31 +45,6 @@
 
 
 
-/* @font-face {
-  font-family: 'star_thingsnormal';
-  src: url('starthings-webfont.eot');
-  src: url('starthings-webfont.eot?#iefix') format("embedded-opentype"),
-    url('starthings-webfont.ttf') format("truetype"),
-    url('starthings-webfont.woff') format("woff"),
-    url('starthings-webfont.svg#starthings') format("svg");
-  font-weight: normal;
-  font-style: normal;
-} */
-
-/* @font-face {
-    font-family: 'star_thingsnormal';
-    src: url('fonts/starthings-webfont.eot'),
-    src: url('fonts/starthings-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/starthings-webfont.woff') format('woff'),
-         url('fonts/starthings-webfont.ttf') format('truetype'),
-         url('fonts/starthings-webfont.svg#star_thingsnormal') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-} */
-
-
-
 * {
   padding: 0;
   margin: 0;

@@ -17,10 +17,25 @@ class LoansController < ApplicationController
 		@loan = Loan.new(lender_id: current_user.id, lendee_id: params[:post][:id], ownership_id: @ownership.id, out: true)
 		if @loan.save
 			redirect_to current_user
+			flash[:notice] = "Added loan"
 		else
 			render :new
+			flash[:error] = "Unable to add loan"
 		end
 	end
+
+	def edit
+		@loan = Loan.find(params[:id])
+		@loan.update(out: params[:out])
+	end
+
+	def update
+			@loan = Loan.find(params[:id])
+			@loan.update(out: params[:out])
+			redirect_to current_user
+			flash[:notice] = "Updated Loan"
+	end
+
 
 	private
 

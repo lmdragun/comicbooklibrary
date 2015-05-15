@@ -1,0 +1,10 @@
+Update Loan:
+
+<%= form_for [@loan] do |f| %>
+	<%= label :out, "Returned?" %>
+		<%= label :out, "Yes"%>
+		<%= f.radio_button :out, false, :value => false%>
+		<%= label :out, "No"%>
+		<%= f.radio_button :out, true, :value => true%>
+	<%= f.submit %>
+<% end %>

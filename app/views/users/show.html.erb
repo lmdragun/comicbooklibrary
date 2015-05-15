@@ -39,20 +39,17 @@
         <th>Issue</th>
         <th>Info</th>
         <th></th>
+
+        <!-- Would move the following logic to a model if it wasn't so dependent on the if statement -->
         <% @comics_sorted.each do |c| %>
           <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
-          <%#= ownership.id %>
-          <% @loans = Loan.where(ownership_id: ownership.id) %>
-
-
-
-        <tr>
+          <tr>
               <td>
                 <a href="/comics/<%= c.id %>"><img src="<%= c.cover_img_url%>"></a>
               </td>
               <td class="comic-series-td">
                 <strong><%= c.series %> ( <%= c.year %> )</strong>
-                <!-- Would move the following logic to a model if it wasn't so dependent on the if statement -->
+
                 <% if ownership.favorite == true %>
                 <span class="comic-fav"> f </span>
                 <% end %>
@@ -75,7 +72,7 @@
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
                 <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
               </td>
-        </tr>
+          </tr>
         <% end %>
       </table>
     <div class="add-comic">
@@ -84,10 +81,17 @@
     </div>
     <div class="loans">
       <h3>On Loan:</h3>
-      <% @loans.each do |l| %>
-      <% if l.out == true %>
-        <% @lendee = User.where(id: @loans.first.lendee_id) %>
-        <%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %>
+      <% @comics_sorted.each do |c| %>
+        <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
+        <% @loans = Loan.where(ownership_id: ownership.id) %>
+        <% @loans.each do |l| %>
+          <% @lendee = User.where(id: l.lendee_id) %>
+          <% if l.out == true %>
+
+            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</p>
+          <% else %>
+            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> and returned on <%= l.updated_at.to_date %></p>
+          <% end %>
         <% end %>
       <% end %>
     </div>
