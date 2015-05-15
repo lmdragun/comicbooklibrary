@@ -103,7 +103,7 @@
                 <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
                 <td><%= @lendee.first.username %></td>
                 <td><%= l.created_at.to_date %></td>
-                <td>Still Out</td>
+                <td><%= l.updated_at.to_date %></td>
               </tr>
               <% end %>
             </table>
