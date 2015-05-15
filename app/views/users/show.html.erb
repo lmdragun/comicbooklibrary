@@ -96,7 +96,7 @@
                 <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
                 <td><%= @lendee.first.username %></td>
                 <td><%= l.created_at.to_date %></td>
-                <td>Still Out</td>
+                <td>Still Out (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</td>
               </tr>
               <% else %>
               <tr>
