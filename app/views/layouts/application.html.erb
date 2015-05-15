@@ -14,12 +14,11 @@
         <p><%= link_to current_user.username, current_user %></p>
         <p class="signout"><%= link_to "Sign Out", signout_path, method: :delete %></p>
       <% else %>
-        <div id="login" style="display:none;">
-          <p><a href="/signup">Sign Up</a></p>
-          <%= render "shared/login" %>
-        </div>
-        <!-- Link to open the modal -->
-        <p><a href="#login" rel="modal:open">Login</a></p>
+<div id="login" style="display:none;">
+  <%= render "shared/login" %>
+  <p class="signup"><a href="/signup">Sign Up</a></p>
+</div>
+        <p><a href="#login" rel="modal:open">Signup/Login</a></p>
       <% end %>
     </div>
   </header>

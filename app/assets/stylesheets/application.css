@@ -122,6 +122,11 @@ header h1 a {
   text-decoration:none;
 }
 
+.signup{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .signout a {
   color: #FBE403;
   text-decoration: none;

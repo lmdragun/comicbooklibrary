@@ -188,7 +188,7 @@
     zIndex: 1,
     escapeClose: true,
     clickClose: true,
-    closeText: 'Close',
+    closeText: 'X',
     closeClass: '',
     modalClass: "modal",
     spinnerHtml: null,
