@@ -71,7 +71,7 @@ class ComicsController < ApplicationController
 
 	def comic_params
 		# this parses any string date into a proper looking date regardless of what was put in
-		params[:comic][:date_published] = Chronic.parse(params[:comic][:date_published]).to_date
+		# params[:comic][:date_published] = Chronic.parse(params[:comic][:date_published]).to_date
 		# these are strong params, since ownership was included in the same form, it ends up in comic params
 		params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url, :ownership => [:location, :favorite, :note])
 	end
