@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "Unable to follow user."
-      redirect_to @user
+      redirect_to current_user
     end
   end
 
