@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
 /* Title font */
@@ -22,6 +22,7 @@
     url('../fonts/sup/suplexmentarycomicnc.woff') format('woff'),
     url('../fonts/sup/suplexmentarycomicnc.svg') format('svg');
 } */
+
 
 @font-face {
   font-family: 'Suplexmentary Comic NC';
@@ -56,7 +57,7 @@
   font-style: normal;
 } */
 
-/* @font-face {
+@font-face {
     font-family: 'star_thingsnormal';
     src: url('fonts/starthings-webfont.eot'),
     src: url('fonts/starthings-webfont.eot?#iefix') format('embedded-opentype'),
@@ -66,17 +67,6 @@
     font-weight: normal;
     font-style: normal;
 
-} */
-
-@font-face {
-  font-family: "star_thingsnormal";
-  src: asset-url("starthings-webfont.eot");
-  src: asset-url("starthings-webfont.eot?#iefix") format("embedded-opentype"),
-       asset-url("starthings-webfont.woff") format("woff"),
-       asset-url("starthings-webfont.ttf") format("truetype"),
-       asset-url("starthings-webfont.svg#fontcustom") format("svg");
-  font-weight: normal;
-  font-style: normal;
 }
 
 
