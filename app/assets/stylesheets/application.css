@@ -42,12 +42,50 @@
          url('starthings-webfont.svg#star_thingsnormal') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+@font-face {
+    font-family: 'quicksandbold';
+    src: url('quicksand_bold-webfont.eot');
+    src: url('quicksand_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('quicksand_bold-webfont.woff2') format('woff2'),
+         url('quicksand_bold-webfont.woff') format('woff'),
+         url('quicksand_bold-webfont.ttf') format('truetype'),
+         url('quicksand_bold-webfont.svg#quicksandbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'quicksandbook';
+    src: url('quicksand_book-webfont.eot');
+    src: url('quicksand_book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('quicksand_book-webfont.woff2') format('woff2'),
+         url('quicksand_book-webfont.woff') format('woff'),
+         url('quicksand_book-webfont.ttf') format('truetype'),
+         url('quicksand_book-webfont.svg#quicksandbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'quicksandbook_oblique';
+    src: url('quicksand_book_oblique-webfont.eot');
+    src: url('quicksand_book_oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('quicksand_book_oblique-webfont.woff2') format('woff2'),
+         url('quicksand_book_oblique-webfont.woff') format('woff'),
+         url('quicksand_book_oblique-webfont.ttf') format('truetype'),
+         url('quicksand_book_oblique-webfont.svg#quicksandbook_oblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
 
 * {
   padding: 0;
   margin: 0;
+  font-family: 'quicksandbook', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
 }
 
 /* Universal Top Bar */
@@ -56,7 +94,7 @@ header {
   min-width: 100%;
   height: 50px;
   font-family: Arial;
-  background-color: #000;
+  border: 1px solid #333;
   color: #FBE403;
   float: left;
   margin: 0 rem;
@@ -122,6 +160,29 @@ header h1 a {
   box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
 }
 
+.welcome {
+  margin-left: 20%;
+  color: #fff;
+  padding: 10% 30% 30% 10%;
+}
+
+.welcome .message {
+  background-color: #000;
+  margin: 20px auto;
+  width: 300px;
+  padding: 50px;
+  text-align: center;
+}
+
+.flash{
+  margin-left: 30%;
+  padding: 5px;
+  color: #FBE403;
+  border: 1px solid #333;
+  width: 20%;
+  text-align: center;
+}
+
 /* Users Show Page */
 
 #user-show a {
@@ -142,10 +203,9 @@ header h1 a {
 
 #user-sidebar {
   margin: 10px;
-  border: 1px solid #000;
+  border-bottom: 1px solid #333;
   width: 20%;
   float: left;
-  background-color: #000;
   color: #fff;
 }
 
@@ -188,12 +248,11 @@ header h1 a {
 /* User's collection */
 
 #comic-library {
-  border: 1px solid #000;
+  border-bottom: 1px solid #333;
   float: right;
   width: 60%;
   margin: 10px;
   margin-right: 10%;
-  background-color: #000;
   color: #fff;
 }
 
@@ -239,7 +298,7 @@ th {
 
 td {
   text-align: center;
-  border: 1px solid #c8b602;
+/*   border: 1px solid #c8b602; */
 }
 
 td img {
@@ -276,12 +335,13 @@ td img {
   padding: 5px 10px 5px 10px;
   margin: 10px auto;
   text-decoration: none;
-  max-width: 110px;
-  box-shadow: 1px 1px 1px 1px #e1cd02;
+  max-width: 150px;
+  border: 1px solid #333;
+/*   box-shadow: 1px 1px 1px 1px #e1cd02; */
 }
 
 .btn:hover {
-  background: #e1cd02;
+  color: #e1cd02;
   text-decoration: none;
 }
 
@@ -305,4 +365,38 @@ td img {
 
 #new-comic-form .submit {
   margin-top: 20px;
+}
+
+.comic-show {
+  padding: 10%;
+  width: 80%;
+}
+
+.comic-box {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+}
+
+.comic-cover {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.owners {
+  margin: 10px auto;
+  border: 1px solid #333;
+  width: 40%;
+  padding: 10px;
+}
+
+.owners h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.allcomics a {
+  color: #FBE403;
+  text-decoration: none;
+  margin-left: 20px;
 }

@@ -7,7 +7,7 @@
 
 <div id="new-comic-form">
 <h2>Add a New Comic</h2>
-<%= form_for [@comic, @ownership] do |f| %>
+<%= form_for [@comic] do |f| %>
 	<div class="label"><%= f.label :series %></div>
 	<div class="input"><%= f.text_field :series %></div>
 	<div class="label"><%= f.label :number %></div>
@@ -17,22 +17,25 @@
 	<div class="label"><%= f.label "Creator(s)" %></div>
 		<div class="input"><%= f.text_field :creators %></div>
 	<div class="label"><%= f.label :date_published %></div>
-	<%= date_select :comic, :date_published, :start_year => 1933, :end_year => Date.current.year %>
+	<%#= date_select :comic, :date_published, :start_year => 1933, :end_year => Date.current.year %>
+	<%= f.text_field :date_published %>
 	<div class="label"><%= f.label "Year Series Started" %></div>
 		<div class="input"><%= f.text_field :year %></div>
 	<div class="label"><%= f.label "Url for Cover Image" %></div>
 		<div class="input"><%= f.text_field :cover_img_url %></div>
 	<div class="label">Select Company</div>
 	<div class="input"><%= collection_select(:post, :id, Company.order('name'), :id, :name) %><br /></div>
-	<%= f.label :location %>
-	<%= f.text_area :location %>
-	<%= f.label :note %>
-	<%= f.text_area :note %>
-	<%= label :favorite, "Favorite?" %>
-	<%= label :favorite, "Yes"%>
-	<%= f.radio_button :favorite, true, :value => true%>
-	<%= label :favorite, "No"%>
-	<%= f.radio_button :favorite, false, :value => false%>
+	<%= f.fields_for @ownership do |o| %>
+		<%= o.label :location %>
+		<%= o.text_area :location %>
+		<%= o.label :note %>
+		<%= o.text_field :note %>
+		<%= o.label :favorite, "Favorite?" %>
+		<%= o.label :favorite, "Yes"%>
+		<%= o.radio_button :favorite, true, :value => true%>
+		<%= o.label :favorite, "No"%>
+		<%= o.radio_button :favorite, false, :value => false%>
+	<% end %>
 	<div class="submit"><%= f.submit %></div>
 <% end %>
 

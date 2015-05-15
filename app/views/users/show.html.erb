@@ -25,6 +25,9 @@
           <li><%=h user.username %></li>
         <% end %>
       </ul>
+      <% if current_user != @user %>
+      <div class="find-users"><%= link_to "Follow This User", follows_path(:followed_id => @user), :method => :post %></div>
+      <% end %>
     </div>
   </div>
 
@@ -37,6 +40,14 @@
         <th>Info</th>
         <th></th>
         <% @comics_sorted.each do |c| %>
+          <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
+          <%#= ownership.id %>
+          <% loans = Loan.where(ownership_id: ownership.id) %>
+          <!-- <%#= loans.out.value %> -->
+          <!-- <%# i = 0 %>
+          <%# while i < loan.length %>
+          <%# loan = Loan.where(ownership_id: ownership.id)[0].out %> -->
+
         <tr>
               <td>
                 <a href="/comics/<%= c.id %>"><img src="<%= c.cover_img_url%>"></a>
@@ -44,7 +55,6 @@
               <td class="comic-series-td">
                 <strong><%= c.series %> ( <%= c.year %> )</strong>
                 <!-- Would move the following logic to a model if it wasn't so dependent on the if statement -->
-                <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
                 <% if ownership.favorite == true %>
                 <span class="comic-fav"> f </span>
                 <% end %>
@@ -59,6 +69,9 @@
                 <% if ownership.note %>
                   <p><strong>Notes: </strong><%#= ownership.note %></p>
                 <% end %>
+                <!-- <%# if loan.out == true %>
+                  <%#= loan %>
+                  <%# end %> -->
               </td>
               <td class="comic-links">
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
@@ -71,12 +84,12 @@
       <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
       <p class="btn"><%= link_to "Find Comic", comics_path %></p>
     </div>
-    <% @loans.each do |l| %>
-      <p>Ownership ID: <%= l.ownership_id %> Lender ID: <%= l.lender_id %> Lendee ID:<%= l.lendee_id %></p>
-    <% end %>
+
   </div>
 </div>
-
+<%# @loans.each do |l| %>
+  <!-- <p>Ownership ID: <%#= l.ownership_id %> Lender ID: <%#= l.lender_id %> Lendee ID:<%#= l.lendee_id %></p> -->
+<%# end %>
  <script>
 //   $(document).ready({
 //     UserComicsView.lookupComic();

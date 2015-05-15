@@ -1,5 +1,16 @@
-<img src="<%= @comic.cover_img_url%>">
-<h2><%= @comic.series %> (<%= @comic.year %>) #<%= @comic.number %></h2>
-<h2>By: <%= @comic.creators %></h2>
-<h2><%= @comic.date_published %></h2>
-<h3>Loan to a friend</h3>
+<div class="comic-show">
+	<div class="comic-box">
+		<img src="<%= @comic.cover_img_url%>" class="comic-cover">
+		<h2><%= @comic.series %> (<%= @comic.year %>) #<%= @comic.number %></h2>
+		<h2>By: <%= @comic.creators %></h2>
+		<h3> <%= @comic.date_published %></h3>
+		<!-- <h3><%#= @date_format %> -->
+		<div class="owners">
+			<h3>Owned by:</h3>
+				<% @comic.users.each do |u|%>
+					<p><%= u.username %></p>
+				<% end %>
+		</div>
+		<h4>Add to your collection</h4>
+	</div>
+</div>

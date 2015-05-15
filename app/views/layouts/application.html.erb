@@ -23,7 +23,10 @@
       <% end %>
     </div>
   </header>
-
+  <% if flash[:error] || flash[:notice] %>
+    <p class="flash"><%= flash[:error] %></p>
+    <p class="flash"><%= flash[:notice] %></p>
+  <% end %>
 <%= yield %>
 
 </body>

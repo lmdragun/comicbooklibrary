@@ -3,18 +3,18 @@ before_action :require_signin, except: [:new, :create]
 
 def index
 	@users = User.all
+
+	respond_to do |format|
+		format.html { render :index }
+		format.json { render json: @users }
+	end
+
 end
 
 def show
 	@user = User.find(params[:id])
-	@owned = @user.ownerships.all
+	# @owned = @user.ownerships.all
 	@comics_sorted = @user.comics.sort_by { |comic| comic.series.capitalize }
-
-
-	# @ordered_comics = @owned_comics.comics.order(series: :desc)
-
-
-	@loans = Loan.where(lender_id: @user.id)
 	# @loans_ownership = @user.ownerships.find(@loans).comic_id
 	# @loans_comic = Comic.where()
 end

@@ -3,13 +3,17 @@ class ComicsController < ApplicationController
 	def index
 		@comics = Comic.all
 		@comic = Comic.new
-		# secret_key = ENV['comicvine_key']
-		# @search_series = params[:series].to_s
-		# @search_creators = params[:creators].to_s
-		# @url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + @search_series + @search_creators
-		#
-		# @response = HTTParty.get(@url).parsed_response["results"]
-		# p @response
+		@series_test = "Test Gambit Rogue"
+		@series = @series_test.gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		@creators_test = "Test Whedon"
+		@creators = @creators_test.gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		# @series = params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		# @creators = params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		secret_key = ENV['comicvine_key']
+		url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + @series + @creators
+
+		comic_vine_response = HTTParty.get(url)
+		comic_vine_comics = comic_vine_response["results"]
 
 		respond_to do |format|
 			format.html { render :index }
@@ -20,10 +24,9 @@ class ComicsController < ApplicationController
 	def lookup
 		@result = Comic.identify(
 			# taking out spaces, replacing with dashes
-			params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
-			params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+			@series = params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
+			@creators = params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
 		)
-
 		respond_to do |format|
 			format.html {render :index}
 			format.json {render json: @result}
@@ -32,6 +35,7 @@ class ComicsController < ApplicationController
 
 	def show
 		@comic = Comic.find(params[:id])
+		@date = @comic.date_published
 	end
 
 	def new
@@ -41,9 +45,10 @@ class ComicsController < ApplicationController
 	end
 
 	def create
-		@company = params[:post][:id]
-		@comic = Comic.new(comic_params, company_id: @company)
-		@ownership = current_user.ownerships.new(ownership_params, comic:@comic)
+		company_id = params[:post][:id]
+		# comics params reject ownership, from the strong params below
+		@comic = Comic.new(comic_params.merge(company_id: company_id).reject {|key| key == 'ownership' })
+		@ownership = current_user.ownerships.new(comic_params[:ownership].merge(comic:@comic))
 		if @ownership.save
 			redirect_to @comic
 		else
@@ -65,11 +70,10 @@ class ComicsController < ApplicationController
 	private
 
 	def comic_params
-		params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url)
-	end
-
-	def ownership_params
-		params.required(:ownership).permit(:location, :favorite, :note)
+		# this parses any string date into a proper looking date regardless of what was put in
+		params[:comic][:date_published] = Chronic.parse(params[:comic][:date_published]).to_date
+		# these are strong params, since ownership was included in the same form, it ends up in comic params
+		params.require(:comic).permit(:title, :number, :creators, :date_published, :year, :series, :company_id, :cover_img_url, :ownership => [:location, :favorite, :note])
 	end
 
 end

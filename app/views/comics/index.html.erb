@@ -12,19 +12,36 @@
 <input id="comic-series-input" placeholder="search-series"><input id="comic-creator-input" placeholder="search-creator">  <input type="submit" id="update-comic"><br>
 <br><br><br>
 <h1>User Comics:</h1>
-<ul>
-	<% @comics.each do |c| %>
-	<li>
-		<!-- form (with hidden fields) (on submit makes request with user and comic IDs) -->
-		<%= c.title %>
-	</li>
-	<% end %>
+<div>
+</div>
+<ul class="allcomics">
+
 </ul>
+<script>
+$( window ).load(function() {
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: "http://localhost:3000/comics"
+	}).done(function(response){
+		console.log(response);
+	}).done(function(response){
+
+		for(var i = 0; i < response.length; i++){
+			$(".allcomics").append("<li><a href=\"\/comics\/" + (i + 1) + "\">" + response[i].series + "(" + response[i].year + ") #"+ response[i].number + "</a></li>")
+		}
+
+	}).fail(function( response ) {
+	  alert( "Request failed" );
+	})
+})
+</script>
+
 <script>
 $(document).ready(function(){
 	var seriesInput = $('#comic_series');
 	var creatorsInput = $('#comic_creators')
-	$('#new_comic').submit(function(event){
+	$('.submit').submit(function(event){
 		event.preventDefault();
 		Comic.fetchComics(seriesInput.val(), creatorsInput.val());
 	});
