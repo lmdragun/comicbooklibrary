@@ -42,11 +42,9 @@
         <% @comics_sorted.each do |c| %>
           <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
           <%#= ownership.id %>
-          <% loans = Loan.where(ownership_id: ownership.id) %>
-          <!-- <%#= loans.out.value %> -->
-          <!-- <%# i = 0 %>
-          <%# while i < loan.length %>
-          <%# loan = Loan.where(ownership_id: ownership.id)[0].out %> -->
+          <% @loans = Loan.where(ownership_id: ownership.id) %>
+
+
 
         <tr>
               <td>
@@ -84,14 +82,25 @@
       <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
       <p class="btn"><%= link_to "Find Comic", comics_path %></p>
     </div>
-
+    <div class="loans">
+      <h3>On Loan:</h3>
+      <% @loans.each do |l| %>
+      <% if l.out == true %>
+        <% @lendee = User.where(id: @loans.first.lendee_id) %>
+        <%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+
+
+
 </div>
 <%# @loans.each do |l| %>
   <!-- <p>Ownership ID: <%#= l.ownership_id %> Lender ID: <%#= l.lender_id %> Lendee ID:<%#= l.lendee_id %></p> -->
 <%# end %>
- <script>
+ <!--  <script>
 //   $(document).ready({
 //     UserComicsView.lookupComic();
 //   })
-// </script>
+// </#script> -->
