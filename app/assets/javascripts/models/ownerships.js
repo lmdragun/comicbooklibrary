@@ -1,7 +1,7 @@
-function Ownerships() {
-	this.fetchOwnerships();
-	console.log("in Ownerships Model");
-}
+// function Ownerships() {
+// 	this.fetchOwnerships();
+// 	console.log("in Ownerships Model");
+// }
 
 // UserComics.prototype = {
 // 	fetchUserComics: function(){
