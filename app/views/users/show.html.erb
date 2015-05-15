@@ -86,12 +86,31 @@
         <% @loans = Loan.where(ownership_id: ownership.id) %>
         <% @loans.each do |l| %>
           <% @lendee = User.where(id: l.lendee_id) %>
-          <% if l.out == true %>
+          <table class="loan-library">
+            <th>Comic</th>
+            <th>Loaned to</th>
+            <th>Date Out</th>
+            <th>Date Returned</th>
+            <% if l.out == true %>
+              <tr>
+                <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
+                <td><%= @lendee.first.username %></td>
+                <td><%= l.created_at.to_date %></td>
+                <td>Still Out</td>
+              </tr>
+              <% else %>
+              <tr>
+                <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
+                <td><%= @lendee.first.username %></td>
+                <td><%= l.created_at.to_date %></td>
+                <td>Still Out</td>
+              </tr>
+              <% end %>
+            </table>
+            <!-- <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</p>
 
-            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</p>
-          <% else %>
-            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> and returned on <%= l.updated_at.to_date %></p>
-          <% end %>
+            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> and returned on <%= l.updated_at.to_date %></p>-->
+
         <% end %>
       <% end %>
     </div>
