@@ -1,0 +1,407 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+/* Title font */
+/*  @font-face {
+ font-family: 'Suplexmentary Comic NC';
+ src:
+ url('../fonts/sup/SuplexmentaryComicNC.ttf') format('truetype'),
+    url('../fonts/sup/suplexmentarycomicnc.woff') format('woff'),
+    url('../fonts/sup/suplexmentarycomicnc.svg') format('svg');
+} */
+
+
+@font-face {
+  font-family: 'Suplexmentary Comic NC';
+  src: url(/assets/sup/SuplexmentaryComicNC.eot);
+  src: url(/assets/sup/SuplexmentaryComicNC.eot?#iefix) format("embedded-opentype"),
+    url(/assets/sup/SuplexmentaryComicNC.ttf) format("truetype"),
+    url(/assets/sup/SuplexmentaryComicNC.woff) format("woff"),
+    url(/assets/sup/SuplexmentaryComicNC.svg#icofonts) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+ font-family: 'Komikabb';
+ src:
+ url('../fonts/komi/KOMIKABB.ttf') format('truetype'),
+    url('../fonts/komi/komikabb.ttf') format('woff'),
+    url('../fonts/komi/komikabb.svg') format('svg');
+}
+
+
+
+/* @font-face {
+  font-family: 'star_thingsnormal';
+  src: url('starthings-webfont.eot');
+  src: url('starthings-webfont.eot?#iefix') format("embedded-opentype"),
+    url('starthings-webfont.ttf') format("truetype"),
+    url('starthings-webfont.woff') format("woff"),
+    url('starthings-webfont.svg#starthings') format("svg");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @font-face {
+    font-family: 'star_thingsnormal';
+    src: url('fonts/starthings-webfont.eot'),
+    src: url('fonts/starthings-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/starthings-webfont.woff') format('woff'),
+         url('fonts/starthings-webfont.ttf') format('truetype'),
+         url('fonts/starthings-webfont.svg#star_thingsnormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+} */
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'quicksandbook', sans-serif;
+}
+
+/* Universal Top Bar */
+
+header {
+  min-width: 100%;
+  height: 50px;
+  font-family: Arial;
+  border: 1px solid #333;
+  color: #FBE403;
+  float: left;
+  margin: 0 rem;
+  padding: 0.25rem;
+  overflow: hidden;
+}
+
+header h1 a {
+  font-family: 'Suplexmentary Comic NC', sans-serif;
+  color: #FBE403;
+  text-decoration: none;
+  text-indent: 10px;
+  float: left;
+}
+
+#sign-in {
+  float: right;
+  margin-right: 10px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+#sign-in a {
+  color: #fff;
+  text-decoration:none;
+}
+
+.signup{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.signout a {
+  color: #FBE403;
+  text-decoration: none;
+}
+
+#overlay {
+     visibility: hidden;
+     position: absolute;
+     width:50px;
+     height:50px;
+     background-color: #FBE403;
+     text-align:center;
+     z-index: 1000;
+}
+
+/* Sign-in modal */
+
+.modal a.close-modal[class*="icon-"] {
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+  background: #900;
+  border: 2px solid #fff;
+  -webkit-border-radius:  26px;
+  -moz-border-radius:     26px;
+  -o-border-radius:       26px;
+  -ms-border-radius:      26px;
+  -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.welcome {
+  margin-left: 20%;
+  color: #fff;
+  padding: 10% 30% 30% 10%;
+}
+
+.welcome .message {
+  background-color: #000;
+  margin: 20px auto;
+  width: 300px;
+  padding: 50px;
+  text-align: center;
+}
+
+.flash{
+  margin-left: 30%;
+  padding: 5px;
+  color: #FBE403;
+  border: 1px solid #333;
+  width: 20%;
+  text-align: center;
+}
+
+/* Users Show Page */
+
+#user-show a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.users {
+  padding: 10px;
+}
+
+.users a {
+  color: #FBE403;
+  text-decoration: none;
+}
+
+/* Sidebar on user's show page */
+
+#user-sidebar {
+  margin: 10px;
+  border-bottom: 1px solid #333;
+  width: 20%;
+  float: left;
+  color: #fff;
+}
+
+#user-sidebar h2, #user-sidebar h3 {
+  text-align: center;
+  text-decoration: underline;
+  padding: 6px;
+  color: #FBE403;
+  font-family: 'Suplexmentary Comic NC', sans-serif;
+}
+
+#follows-block p {
+  display: inline;
+  padding: 3px;
+}
+
+.unfollow, .unfollow a {
+  font-size: 10px;
+  text-decoration: none;
+  display: inline;
+  color: #000;
+}
+
+.find-users, .find-users a {
+  text-indent: 10px;
+  padding: 10%;
+  font-size: 14px;
+  text-decoration: none;
+  font-variant: small-caps;
+}
+
+#user-sidebar p {
+  text-indent: 3px;
+}
+
+.profile {
+  margin-bottom: 10px;
+}
+
+/* User's collection */
+
+#comic-library {
+  border-bottom: 1px solid #333;
+  float: right;
+  width: 60%;
+  margin: 10px;
+  margin-right: 10%;
+  color: #fff;
+}
+
+#comic-library h3 {
+  color: #FBE403;
+  text-align: center;
+  font-family: 'Suplexmentary Comic NC', sans-serif;
+  font-size: 26px;
+  text-shadow: 2px 2px #333;
+}
+
+.comics {
+  padding: 10px;
+  text-indent: 30px;
+}
+
+.comics img {
+  max-width: 100px;
+  max-height: 100px;
+  display: inline-block;
+  float:left;
+  position: relative;
+}
+
+.comic-info {
+  float:left;
+  position:relative;
+}
+
+.comic-fav {
+  font-family: 'star_thingsnormal';
+  font-size:20px;
+  color: #FBE403;
+}
+table {
+  margin: auto;
+}
+
+
+th {
+  padding-top: 40px;
+}
+
+td {
+  text-align: center;
+/*   border: 1px solid #c8b602; */
+}
+
+td img {
+  max-width: 100px;
+  max-height: 100px;
+  padding:6px;
+}
+
+.comic-series-td {
+  width: 45%;
+}
+
+.comic-issue-td {
+  width: 5%;
+}
+
+.comic-notes-td {
+  width: 30%;
+}
+
+.comic-links {
+  font-size: 13px;
+}
+
+.add-comic {
+  text-align: center;
+  padding: 5px;
+}
+
+.loans{
+  position: relative;
+  border-top: 1px solid #333;
+  padding: 5px;
+}
+
+.btn {
+  font-family: 'quicksandbook', sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 5px 10px 5px 10px;
+  margin: 10px auto;
+  text-decoration: none;
+  max-width: 150px;
+  border: 1px solid #333;
+}
+
+.btn:hover {
+  color: #e1cd02;
+  text-decoration: none;
+}
+
+/* Adding a new comic */
+
+.fill-in {
+  display: block;
+}
+
+#new-comic-form {
+  width: 40%;
+  border: 1px solid #000;
+  padding: 50px 10px 10px 10px;
+  margin-left: 30%;
+  text-align: center;
+}
+
+#new-comic-form .label {
+  margin-top: 5px;
+}
+
+#new-comic-form .submit {
+  margin-top: 20px;
+}
+
+.comic-show {
+  padding: 10%;
+  width: 80%;
+}
+
+.comic-box {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+}
+
+.comic-cover {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.owners {
+  margin: 10px auto;
+  border: 1px solid #333;
+  width: 40%;
+  padding: 10px;
+}
+
+.owners h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.allcomics a {
+  color: #FBE403;
+  text-decoration: none;
+  margin-left: 20px;
+}
