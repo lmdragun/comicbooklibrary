@@ -64,9 +64,6 @@
                 <% if ownership.note %>
                   <p><strong>Notes: </strong><%#= ownership.note %></p>
                 <% end %>
-                <!-- <%# if loan.out == true %>
-                  <%#= loan %>
-                  <%# end %> -->
               </td>
               <td class="comic-links">
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
@@ -82,6 +79,7 @@
     <div class="loans">
       <h3>On Loan:</h3>
       <% @comics_sorted.each do |c| %>
+      <!-- would have also put this logic somewhere else if I could have -->
         <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
         <% @loans = Loan.where(ownership_id: ownership.id) %>
         <% @loans.each do |l| %>
@@ -107,10 +105,6 @@
               </tr>
               <% end %>
             </table>
-            <!-- <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</p>
-
-            <p><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %> - loaned to <%= @lendee.first.username %> and returned on <%= l.updated_at.to_date %></p>-->
-
         <% end %>
       <% end %>
     </div>
@@ -119,9 +113,7 @@
 
 
 </div>
-<%# @loans.each do |l| %>
-  <!-- <p>Ownership ID: <%#= l.ownership_id %> Lender ID: <%#= l.lender_id %> Lendee ID:<%#= l.lendee_id %></p> -->
-<%# end %>
+<!-- script I ended up not using -->
  <!--  <script>
 //   $(document).ready({
 //     UserComicsView.lookupComic();
