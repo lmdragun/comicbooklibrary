@@ -4,8 +4,8 @@
 	<% for user in @users %>
 	  <div class="user">
 	    <p>
-	      <strong><%=h user.username %></strong>
-				<%= link_to "Follow", follows_path(:followed_id => user), :method => :post %>
+	      <strong><%= link_to user.username, user_path(user) %></strong>
+				<small><%= link_to "Follow", follows_path(:followed_id => user), :method => :post %></small>
 	      <div class="clear"></div>
 	    </p>
 	  </div>
