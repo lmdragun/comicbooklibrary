@@ -2,12 +2,22 @@
 A personal comic book library for users where they can document their own comics and mark who they have lent comics to, as well as track when those comics have been returned. For a working demonstration, visit https://comicbooklibrary.heroku.com
 
 Using this code:
-Fork this github and clone into your computer. Run ``` bundle install ``` followed by ``` rake db:create db:migrate ``` then run ```rails s``` and go to localhost:3000 on your browser.
+Fork this github and clone into your computer. Run the following code in order:
+```
+bundle install
+```
+```
+rake db:create db:migrate
+```
+```
+rails s
+```
+and go to localhost:3000 on your browser.
 
-User Stories:
+=User Stories:
 These are the user stories I created to help me go through the process of creating the app.
 https://trello.com/b/RH5A8Nyp/comic-book-library
 
-Survey:
+=Survey:
 I also created a short survey to collect user feedback and adjust my User Stories accordingly.
 Some of the results can be viewed here http://bit.ly/1Ed6g7O
