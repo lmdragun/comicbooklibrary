@@ -13,10 +13,7 @@ end
 
 def show
 	@user = User.find(params[:id])
-	# @owned = @user.ownerships.all
 	@comics_sorted = @user.comics.sort_by { |comic| comic.series.capitalize }
-	# @loans_ownership = @user.ownerships.find(@loans).comic_id
-	# @loans_comic = Comic.where()
 end
 
 def new

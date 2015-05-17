@@ -27,7 +27,13 @@ class OwnershipsController < ApplicationController
 		else
 			render :edit
 		end
+	end
 
+	def destroy
+		@ownership = current_user.ownerships.find( params[:id] )
+		@ownership.destroy
+		redirect_to current_user
+		flash[:notice] = "Comic removed from your collection."
 	end
 
 	private

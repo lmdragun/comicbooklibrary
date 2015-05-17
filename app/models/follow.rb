@@ -4,6 +4,6 @@ class Follow < ActiveRecord::Base
 
   validates :followed,
     presence: true,
-    uniqueness: true
+    # uniqueness: true
 
 end
