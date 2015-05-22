@@ -1,9 +1,10 @@
 class FollowsController < ApplicationController
   def create
+
     # maybe check that the user isn't already following that user?
     @user = User.find(params[:followed_id])
-    current_user.follow(@user)
-    if @follow.save
+    
+    if current_user.follow(@user)
       flash[:notice] = "Followed user."
       redirect_to @user
     else
