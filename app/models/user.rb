@@ -51,6 +51,15 @@ class User < ActiveRecord::Base
 		UserMailer.password_reset(self).deliver
 	end
 
+	def follow(other_user)
+		if self.followed.include?(other_user)
+			return false
+		else
+			self.follows.create(:followed_id => other_user.id)
+			return true
+		end
+	end
+
 	private
 	#Create new session token for the user
 	def create_remember_token
