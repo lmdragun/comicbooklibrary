@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
 		has_secure_password #calls method, expects password and password confirmation
 
 	#Create a new remember token for a user
+	# this is correct, but idiomatic ruby usually uses self to define class methods:
+	# def self.new_remember_token
+	# ...
+	# end
+	# as long as you're consistent though, it's cool!
+	# also :thumbs_up: for hand-rolled auth!
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64 #giving access to bcrypt
 	end
@@ -43,6 +49,15 @@ class User < ActiveRecord::Base
 		self.password_reset_sent_at = Time.zone.now
 		save!
 		UserMailer.password_reset(self).deliver
+	end
+
+	def follow(other_user)
+		if self.followed.include?(other_user)
+			return false
+		else
+			self.follows.create(:followed_id => other_user.id)
+			return true
+		end
 	end
 
 	private
