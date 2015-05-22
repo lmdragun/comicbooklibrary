@@ -29,6 +29,8 @@ class LoansController < ApplicationController
 		@loan.update(out: params[:out])
 	end
 
+	# in addition to an update action, you could have a mark_returned action, and simplify the UI of marking a loan as 
+	# returned.
 	def update
 			@loan = Loan.find(params[:id])
 			@loan.update(out: params[:out])

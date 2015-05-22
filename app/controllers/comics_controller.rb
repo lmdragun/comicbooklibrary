@@ -1,6 +1,8 @@
 class ComicsController < ApplicationController
 
 	def index
+		# I'd clean up the test data here.
+		# This controller is a bit complex, and part of it is just the noise of the test variables.
 		@comics = Comic.all
 		@comic = Comic.new
 		@series_test = "Test Gambit Rogue"
@@ -22,8 +24,15 @@ class ComicsController < ApplicationController
 	end
 
 	def lookup
+		# It's a bit non-standard to assign vars in a method params list. Instead, I'd try this:
+		# @series = params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
+		# @creators = params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
+		# @result = Comic.identify(@series, @creators)
+
+		# also, I think you can use rails' built-in `parameterize` method to achieve the same effect as your gsub calls.
 		@result = Comic.identify(
 			# taking out spaces, replacing with dashes
+
 			@series = params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-'),
 			@creators = params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
 		)
