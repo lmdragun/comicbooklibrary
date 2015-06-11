@@ -67,14 +67,24 @@
             <td class="comic-links">
               <% loans = Loan.where(ownership_id: ownership.id) %>
               <% out_loan = loans.where(out: true) %>
-              <% if out_loan %>
-                <%# lendee = User.where(id: out_loan.first.lendee_id) %>
-                <!-- <p>Loaned to: <%#= @lendee.first.username %></p> -->
-                <p>Loaned Out
+              <% @loan = [] %>
+              <% loans.each do |l| %>
+                <% if l.out == true %>
+                  <% @loan.push(true) %>
+                  <%# lendee = User.where(id: out_loan.first.lendee_id) %>
+                  <!-- <p>Loaned to: <%#= @lendee.first.username %></p> -->
+                  <!-- <p>Loaned Out</p> -->
+                  <!-- <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p> -->
+                  <% else %>
+                  <% @loan.push(false) %>
+                <% end %>
+              <% end %>
+              <% if @loan.include?(true) %>
+                <p>Loaned Out</p>
               <% else %>
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
               <% end %>
-                <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
+              <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
             </td>
           </tr>
         <% end %>

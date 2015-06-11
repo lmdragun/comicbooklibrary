@@ -8,7 +8,6 @@ describe "User" do
 	    expect(user.class).to be(User)
 	  end
 
-
 		it "can be destroyed" do
 			user = User.last
 			user.destroy
