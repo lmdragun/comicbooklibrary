@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :companies
 
+  resources :ownerships do
+    resources :loans
+  end
+
   resources :users do
     resources :ownerships
   end

@@ -38,7 +38,7 @@
         <th>Series</th>
         <th>Issue</th>
         <th>Info</th>
-        <th></th>
+        <th>Loans</th>
         <!-- Would move the following logic to a model if it wasn't so dependent on the if statement -->
         <% @comics_sorted.each do |c| %>
           <!-- finding the individual 'ownerships' of each of these comics -->
@@ -63,6 +63,7 @@
               <% if ownership.note %>
                 <p><strong>Notes: </strong><%#= ownership.note %></p>
               <% end %>
+              <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
             </td>
             <td class="comic-links">
               <% loans = Loan.where(ownership_id: ownership.id) %>
@@ -84,7 +85,7 @@
               <% else %>
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
               <% end %>
-              <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
+              <%= link_to "Loan History", ownership_loans_path(ownership.id) %>
             </td>
           </tr>
         <% end %>
@@ -93,11 +94,13 @@
       <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
       <p class="btn"><%= link_to "Find Comic", comics_path %></p>
     </div>
+
     <div class="loans">
       <h3>On Loan:</h3>
       <% @comics_sorted.each do |c| %>
       <!-- would have also put this logic somewhere else if I could have -->
         <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
+        <%= ownership %>
         <% @loans = Loan.where(ownership_id: ownership.id) %>
         <% @loans.each do |l| %>
           <% @lendee = User.where(id: l.lendee_id) %>

@@ -1,7 +1,8 @@
 class LoansController < ApplicationController
 
 	def index
-
+		@ownership = Ownership.find(params[:ownership_id])
+		@loans = @ownership.loans.all
 	end
 
 	def new

@@ -1,0 +1,24 @@
+<table>
+	<th>Series</th>
+	<th>Lendee</th>
+	<th>Out</th>
+	<th>In</th>
+<% @loans.each do |l| %>
+	<% lendee = User.find(l.lendee_id) %>
+	<% if l.out == true %>
+		<tr>
+			<td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
+			<td><%= lendee.username %></td>
+			<td><%= l.created_at.to_date %></td>
+			<td>Still Out</td>
+		</tr>
+	<% else %>
+		<tr>
+			<td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
+			<td><%= lendee.username %></td>
+			<td><%= l.created_at.to_date %></td>
+			<td><%= l.updated_at.to_date %></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
