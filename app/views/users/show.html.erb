@@ -45,10 +45,10 @@
           <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
           <tr>
             <td>
-              <a href="/comics/<%= c.id %>"><img src="<%= c.cover_img_url%>"></a>
+              <a href="/comics/<%= c.id %>"><img src="<%= c.cover_img_url%>" alt="cover image"></a>
             </td>
             <td class="comic-series-td">
-              <strong><%= c.series %> ( <%= c.year %> )</strong>
+              <strong><%= c.series %> (<%= c.year %>)</strong>
               <% if ownership.favorite == true %>
                 <span class="comic-fav"> f </span>
               <% end %>
@@ -57,21 +57,23 @@
               #<%= c.number %> <%= c.title %>
             </td>
             <td class="comic-notes-td">
-              <% if ownership.location %>
-                <p><strong>Location: </strong><%= ownership.location %></p>
+              <% if ownership.location.length > 0 %>
+                <p class="notes">Location: </p><p class="info"><%= ownership.location %></p>
               <% end %>
-              <% if ownership.note %>
-                <p><strong>Notes: </strong><%#= ownership.note %></p>
+              <% if ownership.note.length > 0 %>
+                <p class="notes">Notes: </p><p class="info"><%#= ownership.note %></p>
               <% end %>
-              <p><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">Edit This</a></p>
+              <p><small><a href="/users/<%= current_user.id %>/ownerships/<%= ownership.id %>/edit">(Edit Comic Info)</a></small></p>
             </td>
             <td class="comic-links">
               <% loans = Loan.where(ownership_id: ownership.id) %>
               <% out_loan = loans.where(out: true) %>
               <% @loan = [] %>
               <% loans.each do |l| %>
+              <% @loaned_out = loans.where(out: true) %>
                 <% if l.out == true %>
                   <% @loan.push(true) %>
+
                   <%# lendee = User.where(id: out_loan.first.lendee_id) %>
                   <!-- <p>Loaned to: <%#= @lendee.first.username %></p> -->
                   <!-- <p>Loaned Out</p> -->
@@ -81,7 +83,11 @@
                 <% end %>
               <% end %>
               <% if @loan.include?(true) %>
-                <p>Loaned Out</p>
+                <p><strong>Out</strong></p>
+
+                <p>(<%= link_to "Update Loan", edit_loan_path(@loaned_out.first.id)%>)</p>
+                <!-- <p>(<a class="comic-links" href="/loans/<%#= @loan.id %>/edit">Update Loan</a>)</p> -->
+
               <% else %>
                 <p><a href="/comics/<%= ownership.id %>/loans/new">Loan This</a></p>
               <% end %>
@@ -92,42 +98,42 @@
       </table>
     <div class="add-comic">
       <p class="btn"><%= link_to "Add Comic", new_comic_path %></p>
-      <p class="btn"><%= link_to "Find Comic", comics_path %></p>
+      <!-- <p class="btn"><%#= link_to "Find Comic", comics_path %></p> -->
     </div>
 
-    <div class="loans">
+    <!-- <div class="loans">
       <h3>On Loan:</h3>
-      <% @comics_sorted.each do |c| %>
-      <!-- would have also put this logic somewhere else if I could have -->
-        <% ownership = c.ownerships.find_by(user_id: params[:id]) %>
-        <%= ownership %>
-        <% @loans = Loan.where(ownership_id: ownership.id) %>
-        <% @loans.each do |l| %>
-          <% @lendee = User.where(id: l.lendee_id) %>
+      <%# @comics_sorted.each do |c| %>
+       would have also put this logic somewhere else if I could have
+        <%# ownership = c.ownerships.find_by(user_id: params[:id]) %>
+        <%#= ownership %>
+        <%# @loans = Loan.where(ownership_id: ownership.id) %>
+        <%# @loans.each do |l| %>
+          <%# @lendee = User.where(id: l.lendee_id) %>
           <table class="loan-library">
             <th>Comic</th>
             <th>Loaned to</th>
             <th>Date Out</th>
             <th>Date Returned</th>
-            <% if l.out == true %>
+            <%# if l.out == true %>
               <tr>
-                <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
-                <td><%= @lendee.first.username %></td>
-                <td><%= l.created_at.to_date %></td>
-                <td>Still Out (<a class="comic-links" href="/loans/<%= l.id %>/edit">Update Loan</a>)</td>
+                <td><%#= l.ownership.comic.series %> (<%#= l.ownership.comic.year %>) #<%#= l.ownership.comic.number %></td>
+                <td><%#= @lendee.first.username %></td>
+                <td><%#= l.created_at.to_date %></td>
+                <td>Still Out (<a class="comic-links" href="/loans/<%#= l.id %>/edit">Update Loan</a>)</td>
               </tr>
-              <% else %>
+              <%# else %>
               <tr>
-                <td><%= l.ownership.comic.series %> (<%= l.ownership.comic.year %>) #<%= l.ownership.comic.number %></td>
-                <td><%= @lendee.first.username %></td>
-                <td><%= l.created_at.to_date %></td>
-                <td><%= l.updated_at.to_date %></td>
+                <td><%#= l.ownership.comic.series %> (<%#= l.ownership.comic.year %>) #<%#= l.ownership.comic.number %></td>
+                <td><%#= @lendee.first.username %></td>
+                <td><%#= l.created_at.to_date %></td>
+                <td><%#= l.updated_at.to_date %></td>
               </tr>
-              <% end %>
+              <%# end %>
             </table>
-        <% end %>
-      <% end %>
-    </div>
+        <%# end %>
+      <%# end %>
+    </div>-->
   </div>
 
 

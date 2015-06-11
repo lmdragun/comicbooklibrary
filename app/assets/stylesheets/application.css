@@ -282,19 +282,31 @@ td img {
 }
 
 .comic-series-td {
-  width: 45%;
+  width: 40%;
 }
 
 .comic-issue-td {
-  width: 5%;
+  width: 15%;
 }
 
 .comic-notes-td {
   width: 30%;
 }
 
+.info {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.notes {
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
 .comic-links {
   font-size: 13px;
+  width: 15%;
 }
 
 .add-comic {
@@ -306,6 +318,26 @@ td img {
   position: relative;
   border-top: 1px solid #333;
   padding: 5px;
+}
+
+#loans h3 {
+  font-family: 'Suplexmentary Comic NC', sans-serif;
+  text-align: center;
+  color: #FBE403;
+  font-size: 26px;
+}
+
+#loans h4 {
+  text-align: center;
+}
+
+#loans th {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#loans td {
+  padding: 10px;
 }
 
 .btn {
