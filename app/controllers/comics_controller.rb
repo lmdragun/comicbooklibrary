@@ -7,8 +7,6 @@ class ComicsController < ApplicationController
 		@series = @series_test.gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
 		@creators_test = "Test Whedon"
 		@creators = @creators_test.gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
-		# @series = params[:series].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
-		# @creators = params[:creators].gsub(/[.\/,&()]/, '').gsub(/[\s\-]+/, '-')
 		secret_key = ENV['comicvine_key']
 		url = "http://api.comicvine.com/search/?api_key=#{secret_key}&resources=issue&resource_type=issue&format=jsonp&json_callback=handleCallback&offset=0&query=" + @series + @creators
 
